@@ -96,15 +96,10 @@ const CONFIG = {
       id: "the-quiet-part",
       title: "The Quiet Part",
       type: "story",
-      unlock: "2026-08-17T20:00",
+      unlock: "2026-08-18T20:00",
       mapLabel: "The Quiet Part",
       body: [
-        "Second one today. I know.",
-        "I already used up today's joke on the last letter, so this one's just a straight one.",
-        "Planning this has been one of my favorite parts of the last few weeks. Not the logistics part, the part where I get to think about you doing all of it.",
-        "I'm not telling you why yet. That comes later.",
-        "Back to the nonsense tomorrow.",
-        "I love you. 😘"
+        "[PLACEHOLDER — write this letter before Aug 18, 8:00 PM. See config.js: letters[] -> id \"the-quiet-part\".]"
       ]
     },
     {

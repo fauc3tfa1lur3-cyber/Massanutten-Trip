@@ -16,14 +16,23 @@
     const params = new URLSearchParams(window.location.search);
     const sim = params.get("simDate");
     if (sim) {
-      const d = new Date(sim);
+      const d = parseDate(sim);
       if (!isNaN(d.getTime())) return d;
     }
     return new Date();
   }
 
   function parseDate(str) {
-    return new Date(str);
+    // Manually parse "YYYY-MM-DDTHH:MM" (seconds optional) instead of
+    // handing the raw string to `new Date()`. Some browsers (notably
+    // Safari/iOS) unreliably parse ISO date-time strings that omit
+    // seconds or a timezone offset, silently returning an Invalid Date —
+    // which makes every unlock check quietly fail forever on that device.
+    // Parsing components ourselves makes this consistent everywhere.
+    const m = String(str).match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})(?::(\d{2}))?$/);
+    if (!m) return new Date(str); // fallback for any unexpected format
+    const [, y, mo, d, h, mi, s] = m;
+    return new Date(Number(y), Number(mo) - 1, Number(d), Number(h), Number(mi), Number(s || 0));
   }
 
   function isPast(dateStr) {

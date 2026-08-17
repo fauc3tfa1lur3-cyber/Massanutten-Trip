@@ -78,13 +78,21 @@
   <script src="app.js"></script>
   <script>
     // reflect itinerary lock state on the nav link
+    // (uses the same manual date-component parsing as app.js's parseDate —
+    // native `new Date("YYYY-MM-DDTHH:MM")` parsing is unreliable on some
+    // browsers, notably Safari/iOS, when seconds/timezone are omitted)
+    function parseConfigDate(str) {
+      var m = String(str).match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})(?::(\d{2}))?$/);
+      if (!m) return new Date(str);
+      return new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]), Number(m[4]), Number(m[5]), Number(m[6] || 0));
+    }
     document.addEventListener("DOMContentLoaded", function () {
       var link = document.getElementById("itin-nav-link");
       var now = new Date();
       var params = new URLSearchParams(window.location.search);
       var sim = params.get("simDate");
-      if (sim) { var d = new Date(sim); if (!isNaN(d.getTime())) now = d; }
-      if (now < new Date(CONFIG.itinerary.unlocksAt)) {
+      if (sim) { var d = parseConfigDate(sim); if (!isNaN(d.getTime())) now = d; }
+      if (now < parseConfigDate(CONFIG.itinerary.unlocksAt)) {
         link.classList.add("disabled");
         link.setAttribute("aria-disabled", "true");
       }
