@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Massanutten — The Map</title>
+<meta name="description" content="A little adventure, planned just for us." />
+
+<!--
+  The map below is built with Tailwind-style utility classes (see
+  tailwind-lite.css for why this is a hand-compiled static file
+  rather than the Tailwind CDN script — short version: no external
+  runtime dependency on a site that has to work the moment he opens
+  it, offline or on bad hotel wifi).
+-->
+<link rel="stylesheet" href="tailwind-lite.css" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body class="font-sans">
+
+  <!-- subtle low-opacity mountain line-art watermark, purely decorative -->
+  <div class="fixed inset-x-0 bottom-0 h-[42vh] pointer-events-none opacity-[0.08] z-0" aria-hidden="true">
+    <svg viewBox="0 0 1000 220" preserveAspectRatio="none" class="w-full h-full">
+      <polyline points="0,200 80,100 160,165 260,70 340,155 430,55 520,145 610,80 700,165 800,90 880,155 960,65 1000,120" fill="none" stroke="#D9A75C" stroke-width="2"/>
+      <polyline points="0,220 60,155 150,210 240,130 330,205 420,120 510,200 600,130 690,210 780,140 870,205 960,130 1000,175" fill="none" stroke="#E2A2AD" stroke-width="1.5"/>
+    </svg>
+  </div>
+
+  <div class="wrap">
+
+    <div class="topbar">
+      <div class="brand"><span class="compass">✦</span> The Map</div>
+      <div class="topbar-actions">
+        <button class="notif-bell" id="notif-bell" type="button" aria-label="New letters">
+          🔔<span class="notif-bell-count hidden" id="notif-bell-count">0</span>
+        </button>
+        <a href="itinerary.html" class="nav-link" id="itin-nav-link">Itinerary</a>
+      </div>
+    </div>
+
+    <!-- Countdown header -->
+    <div class="relative z-10 rounded-3xl bg-card text-ink shadow-[0_20px_45px_rgba(0,0,0,0.35)] px-6 py-8 sm:px-10 sm:py-10 mb-8 text-center">
+      <div class="text-[11px] font-bold uppercase tracking-[0.24em] text-wine-500">Massanutten, Virginia</div>
+      <div class="font-sans font-extrabold leading-none text-ink mt-3 text-[5.5rem] sm:text-[6.5rem]" id="countdown-number">—</div>
+      <div class="text-base sm:text-lg font-semibold text-ink/80 mt-1" id="countdown-label">days</div>
+      <div class="text-sm text-wine-500 italic mt-3" id="countdown-sub"></div>
+    </div>
+
+    <!-- one-time "something new unlocked" banner -->
+    <div class="notif-banner hidden" id="notif-banner" role="button" tabindex="0">
+      <span class="notif-banner-text" id="notif-banner-text"></span>
+      <button class="notif-banner-close" id="notif-banner-close" type="button" aria-label="Dismiss">&times;</button>
+    </div>
+
+    <!-- optional, opt-in browser notifications -- only ever shown after he's already opened something -->
+    <div class="notif-prompt hidden" id="notif-prompt">
+      <span>Want a nudge when something new unlocks?</span>
+      <span class="notif-prompt-actions">
+        <button class="notif-enable-btn" id="notif-enable-btn" type="button">Turn on</button>
+        <button class="notif-dismiss-btn" id="notif-dismiss-btn" type="button">No thanks</button>
+      </span>
+    </div>
+
+    <!-- Vertical adventure timeline, rendered by app.js -->
+    <div id="map-container" class="relative z-10">
+      <!-- rendered by app.js -->
+    </div>
+
+    <p class="footer-note">Click a step when it's ready. New ones unlock along the way, so it's worth checking back.</p>
+
+  </div>
+
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="letter-card" id="letter-card"></div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+  <script>
+    // reflect itinerary lock state on the nav link
+    document.addEventListener("DOMContentLoaded", function () {
+      var link = document.getElementById("itin-nav-link");
+      var now = new Date();
+      var params = new URLSearchParams(window.location.search);
+      var sim = params.get("simDate");
+      if (sim) { var d = new Date(sim); if (!isNaN(d.getTime())) now = d; }
+      if (now < new Date(CONFIG.itinerary.unlocksAt)) {
+        link.classList.add("disabled");
+        link.setAttribute("aria-disabled", "true");
+      }
+    });
+  </script>
+</body>
+</html>
