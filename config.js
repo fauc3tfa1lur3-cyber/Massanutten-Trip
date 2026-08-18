@@ -93,6 +93,37 @@ const CONFIG = {
       ]
     },
     {
+      id: "home",
+      title: "Home",
+      type: "story",
+      unlock: "2026-08-17T23:15",
+      mapLabel: "Home",
+      body: [
+        "I used to think home was a place.",
+        "Four walls.",
+        "A street.",
+        "Somewhere to come back to.",
+        "Then I met you and somehow \"home\" started sounding a lot more like your name."
+      ]
+    },
+    {
+      id: "future-us",
+      title: "For a Future Version of Us",
+      type: "story",
+      unlock: "2026-08-18T05:45",
+      mapLabel: "Future Us",
+      body: [
+        "I wonder what we're going to be like years from now.",
+        "What our house looks like.",
+        "What ridiculous thing we'll argue about.",
+        "What we're eating on a random Tuesday night.",
+        "What our vacations look like.",
+        "What we'll laugh about when we're old.",
+        "I don't know any of it yet.",
+        "But I really like knowing that you're the person I get to find out with."
+      ]
+    },
+    {
       id: "the-quiet-part",
       title: "The Quiet Part",
       type: "story",
