@@ -6,6 +6,12 @@
 (function () {
   "use strict";
 
+  // Bump this string every time app.js changes. Visible via ?admin=1 —
+  // lets you tell a stale-cached copy on one device apart from an actual
+  // clock/timezone disagreement when the same letter unlocks on one
+  // device but not another.
+  const SITE_VERSION = "2026-08-18-fixed-tz";
+
   const LS_PREFIX = "mnadv_";
 
   /* ---------------- TIME HELPERS ----------------
@@ -532,7 +538,23 @@
     if (params.get("admin") !== "1") return;
     const panel = document.createElement("div");
     panel.className = "admin-panel";
-    let text = "ADMIN VIEW — his choices so far:\n\n";
+
+    // --- diagnostics: helps tell apart "stale cached code on this
+    // device" vs "this device's clock/timezone disagrees with the fixed
+    // trip timezone" when a letter unlocks on one device but not another ---
+    let text = "ADMIN VIEW — diagnostics:\n\n";
+    text += `Site build: ${typeof SITE_VERSION !== "undefined" ? SITE_VERSION : "(no SITE_VERSION found — very old cached copy)"}\n`;
+    text += `Timezone offset in use: ${typeof CONFIG.timezoneOffsetHours === "number" ? CONFIG.timezoneOffsetHours : "(missing — old cached config.js)"}\n`;
+    const rawNow = new Date();
+    text += `This device's raw clock: ${rawNow.toString()}\n`;
+    text += `Computed "now" the site is using: ${getNow().toString()}\n`;
+    text += `\nLetter unlock check (should read the same real moment on every device):\n`;
+    CONFIG.letters.forEach(l => {
+      const target = parseDate(l.unlock);
+      text += `  ${l.id}: unlock="${l.unlock}" -> parsed=${isNaN(target.getTime()) ? "INVALID DATE" : target.toString()} -> ${isPast(l.unlock) ? "PAST (should be unlocked)" : "still future (locked)"}\n`;
+    });
+
+    text += "\nADMIN VIEW — his choices so far:\n\n";
     CONFIG.letters.filter(l => l.type === "choice").forEach(l => {
       const val = getChoice(l.choiceKey);
       const time = lsGet("choice_" + l.choiceKey + "_time");

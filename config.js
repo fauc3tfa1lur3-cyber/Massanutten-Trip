@@ -138,6 +138,32 @@ const CONFIG = {
       ]
     },
     {
+      id: "a-very-simple-one",
+      title: "A Very Simple One",
+      type: "story",
+      unlock: "2026-08-18T11:00",
+      mapLabel: "Simple One",
+      body: [
+        "I really, really like you.",
+        "That's it.",
+        "That's the letter.",
+        "I love you. 😘"
+      ]
+    },
+    {
+      id: "the-long-way",
+      title: "The Long Way",
+      type: "story",
+      unlock: "2026-08-18T19:00",
+      mapLabel: "The Long Way",
+      body: [
+        "I don't care if we take the long way.",
+        "I don't care if the plans change.",
+        "I don't care if we get lost.",
+        "As long as when I look over, you're still there."
+      ]
+    },
+    {
       id: "the-quiet-part",
       title: "The Quiet Part",
       type: "story",
