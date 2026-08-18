@@ -23,16 +23,27 @@
   }
 
   function parseDate(str) {
-    // Manually parse "YYYY-MM-DDTHH:MM" (seconds optional) instead of
-    // handing the raw string to `new Date()`. Some browsers (notably
-    // Safari/iOS) unreliably parse ISO date-time strings that omit
-    // seconds or a timezone offset, silently returning an Invalid Date —
-    // which makes every unlock check quietly fail forever on that device.
-    // Parsing components ourselves makes this consistent everywhere.
+    // Manually parse "YYYY-MM-DDTHH:MM" (seconds optional) and anchor it
+    // to CONFIG.timezoneOffsetHours (a FIXED timezone — Eastern, since
+    // the trip is in Virginia) rather than the visitor's own device
+    // timezone. Two reasons this matters:
+    //   1. `new Date(y, mo, d, h, mi)` resolves in whatever timezone the
+    //      device itself is set to — if two phones have different TZ
+    //      settings (wrong auto-detected zone, manually misconfigured,
+    //      etc.), the "same" unlock time lands at two different real
+    //      moments. Anchoring to one fixed offset keeps every device in
+    //      sync regardless of its own clock/TZ settings.
+    //   2. Some browsers (notably Safari/iOS) unreliably parse ISO
+    //      date-time strings that omit seconds/offset via `new Date(str)`,
+    //      silently returning an Invalid Date. Parsing components
+    //      ourselves avoids that entirely.
     const m = String(str).match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})(?::(\d{2}))?$/);
     if (!m) return new Date(str); // fallback for any unexpected format
     const [, y, mo, d, h, mi, s] = m;
-    return new Date(Number(y), Number(mo) - 1, Number(d), Number(h), Number(mi), Number(s || 0));
+    const offsetHours = (typeof CONFIG !== "undefined" && typeof CONFIG.timezoneOffsetHours === "number")
+      ? CONFIG.timezoneOffsetHours
+      : 4; // default: Eastern Daylight Time (UTC-4)
+    return new Date(Date.UTC(Number(y), Number(mo) - 1, Number(d), Number(h), Number(mi), Number(s || 0)) + offsetHours * 60 * 60 * 1000);
   }
 
   function isPast(dateStr) {

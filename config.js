@@ -5,15 +5,29 @@
    Everything else reads from this object.
 
    HOW DATES WORK
-   - Write dates as "YYYY-MM-DDTHH:MM" in LOCAL time (24-hour clock).
+   - Write dates as "YYYY-MM-DDTHH:MM" (24-hour clock), meaning that
+     wall-clock time in the TIMEZONE set below — NOT each visitor's own
+     device timezone. This matters: if his phone's timezone is set
+     differently than expected (wrong auto-detected zone, manually set
+     wrong, etc.), unlock times would otherwise land at a different real
+     moment on his phone than on your laptop. Anchoring to one fixed
+     timezone keeps every device in sync regardless of its own clock/TZ
+     settings.
    - "unlock" dates control when a letter/section becomes available.
    - "deadline" dates control when a decision letter locks/closes.
    - "revealAt" dates control when a secret itinerary item shows
      its real content instead of the locked placeholder.
-   - Everything is compared against the visitor's own device clock.
    ============================================================ */
 
 const CONFIG = {
+
+  /* ---------------- TIMEZONE ----------------
+     All dates in this file are interpreted in this fixed timezone.
+     Massanutten, VA is US Eastern. Value = hours WEST of UTC.
+     Eastern Daylight Time (EDT) = 4 — in effect for this entire trip
+     window (through the first Sunday of November). If you ever add
+     dates after that, switch to 5 (EST). */
+  timezoneOffsetHours: 4,
 
   /* ---------------- TRIP BASICS ---------------- */
   trip: {

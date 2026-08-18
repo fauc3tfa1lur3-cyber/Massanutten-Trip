@@ -78,13 +78,14 @@
   <script src="app.js"></script>
   <script>
     // reflect itinerary lock state on the nav link
-    // (uses the same manual date-component parsing as app.js's parseDate —
-    // native `new Date("YYYY-MM-DDTHH:MM")` parsing is unreliable on some
-    // browsers, notably Safari/iOS, when seconds/timezone are omitted)
+    // (uses the same fixed-timezone date parsing as app.js's parseDate —
+    // anchoring to CONFIG.timezoneOffsetHours instead of the device's own
+    // timezone keeps unlock times in sync across every visitor's device)
     function parseConfigDate(str) {
       var m = String(str).match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})(?::(\d{2}))?$/);
       if (!m) return new Date(str);
-      return new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]), Number(m[4]), Number(m[5]), Number(m[6] || 0));
+      var offsetHours = (typeof CONFIG !== "undefined" && typeof CONFIG.timezoneOffsetHours === "number") ? CONFIG.timezoneOffsetHours : 4;
+      return new Date(Date.UTC(Number(m[1]), Number(m[2]) - 1, Number(m[3]), Number(m[4]), Number(m[5]), Number(m[6] || 0)) + offsetHours * 60 * 60 * 1000);
     }
     document.addEventListener("DOMContentLoaded", function () {
       var link = document.getElementById("itin-nav-link");
