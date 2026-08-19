@@ -178,10 +178,44 @@ const CONFIG = {
       ]
     },
     {
+      id: "thank-you-for-being-patient",
+      title: "Thank You for Being Patient With Me",
+      type: "story",
+      unlock: "2026-08-19T18:30",
+      mapLabel: "Patient",
+      body: [
+        "I know I'm not always easy.",
+        "Sometimes I overthink things.",
+        "Sometimes I need reassurance about things I already know the answer to.",
+        "Sometimes my brain decides there's a problem before there actually is one.",
+        "Thank you for being patient with me while I figure out how to be better at all of that.",
+        "I'm working on it.",
+        "And I'm really grateful that I get to do that with you."
+      ]
+    },
+    {
+      id: "still",
+      title: "Still",
+      type: "story",
+      unlock: "2026-08-20T05:45",
+      mapLabel: "Still",
+      body: [
+        "After all the talking,",
+        "laughing,",
+        "planning,",
+        "worrying,",
+        "I still like",
+        "the quietest part best:",
+        "sitting beside you",
+        "with nothing to say",
+        "and nowhere else to be."
+      ]
+    },
+    {
       id: "necessary-fact-1",
       title: "A Completely Necessary Fact",
       type: "useless",
-      unlock: "2026-08-20T05:45",
+      unlock: "2026-08-20T18:30",
       mapLabel: "Necessary Fact",
       body: [
         "Did you know that wombat poop is cube-shaped?",
