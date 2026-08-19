@@ -164,16 +164,6 @@ const CONFIG = {
       ]
     },
     {
-      id: "the-quiet-part",
-      title: "The Quiet Part",
-      type: "story",
-      unlock: "2026-08-18T20:00",
-      mapLabel: "The Quiet Part",
-      body: [
-        "[PLACEHOLDER — write this letter before Aug 18, 8:00 PM. See config.js: letters[] -> id \"the-quiet-part\".]"
-      ]
-    },
-    {
       id: "small-detour",
       title: "A Small Detour",
       type: "story",
