@@ -72,6 +72,24 @@
     return d;
   }
 
+  // Formats a config timestamp for display, always in the fixed trip
+  // timezone (America/New_York) — NOT the viewing device's own timezone —
+  // so the date/time shown reads the same on every device, same as the
+  // underlying unlock logic in parseDate().
+  function formatUnlock(dateStr) {
+    const d = parseDate(dateStr);
+    if (isNaN(d.getTime())) return "";
+    try {
+      return d.toLocaleString("en-US", {
+        timeZone: "America/New_York",
+        month: "short", day: "numeric",
+        hour: "numeric", minute: "2-digit"
+      });
+    } catch (e) {
+      return d.toString();
+    }
+  }
+
   /* ---------------- LOCALSTORAGE ---------------- */
   function lsGet(key) {
     try { return localStorage.getItem(LS_PREFIX + key); } catch (e) { return null; }
@@ -192,22 +210,25 @@
     const status = letterStatus(letter);
     const attrs = `data-letter="${letter.id}" tabindex="0" role="button" aria-label="${status === 'locked' ? 'Locked letter' : letter.title}"`;
 
+    const unlockStamp = formatUnlock(letter.unlock);
+
     if (status === "locked") {
       const d = daysUntil(letter.unlock);
+      const dayPart = d > 0 ? `Unlocks in ${d} ${d === 1 ? "day" : "days"}` : "Unlocks soon";
       return row({
         icon: "🔒", title: "???",
-        sub: d > 0 ? `Unlocks in ${d} ${d === 1 ? "day" : "days"}` : "Unlocks soon",
+        sub: unlockStamp ? `${dayPart} · ${unlockStamp}` : dayPart,
         state: "locked", attrs
       });
     }
 
     const icon = iconForLetter(letter);
     let eyebrow = letter.type === "choice" ? "Decision" : null;
-    let sub = null;
+    let sub = unlockStamp ? `Unlocked ${unlockStamp}` : null;
     if (letter.type === "choice" && status === "opened") {
       const chosen = getChoice(letter.choiceKey);
       eyebrow = "Decision · Locked In";
-      sub = chosen ? `You chose ${chosen}` : null;
+      sub = chosen ? `You chose ${chosen}${unlockStamp ? ` · Unlocked ${unlockStamp}` : ""}` : sub;
     }
 
     const isNew = status === "unlocked";
