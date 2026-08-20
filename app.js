@@ -157,6 +157,10 @@
       icon: "border-gold-400/70 bg-canvas-soft text-gold-300",
       card: "border-transparent bg-transparent text-rose-100/85 !px-1 !py-1.5 shadow-none"
     },
+    toggle: {
+      icon: "border-gold-400/70 bg-canvas-soft text-gold-300 cursor-pointer",
+      card: "border-gold-400/60 bg-white/5 text-rose-100/85 cursor-pointer hover:-translate-y-0.5 transition-all duration-200"
+    },
     chosenPending: {
       icon: "border-rose-300 bg-rose-400 text-ink",
       card: "border-rose-300/50 bg-card/95 text-ink"
@@ -208,7 +212,7 @@
 
   function letterRow(letter) {
     const status = letterStatus(letter);
-    const attrs = `data-letter="${letter.id}" tabindex="0" role="button" aria-label="${status === 'locked' ? 'Locked letter' : letter.title}"`;
+    const attrs = `data-letter="${letter.id}" data-status="${status}" tabindex="0" role="button" aria-label="${status === 'locked' ? 'Locked letter' : letter.title}"`;
 
     const unlockStamp = formatUnlock(letter.unlock);
 
@@ -276,9 +280,39 @@
     return row({ icon: "🔒", title: "???", sub: "Still under wraps", state: "locked" });
   }
 
+  const OPENED_COLLAPSE_KEY = "openedCollapsed";
+
+  function isOpenedCollapsed() {
+    // default: collapsed, so already-read letters don't pile up and bury
+    // whatever's actually new
+    return lsGet(OPENED_COLLAPSE_KEY) !== "0";
+  }
+
   function renderPreTripMap(container) {
+    const opened = [];
+    const rest = []; // locked + unlocked (unread) — always shown, never collapsed
+    CONFIG.letters.forEach(letter => {
+      (letterStatus(letter) === "opened" ? opened : rest).push(letter);
+    });
+
     let inner = anchorRow("🏳", "Start");
-    CONFIG.letters.forEach(letter => { inner += letterRow(letter); });
+
+    if (opened.length) {
+      const collapsed = isOpenedCollapsed();
+      inner += row({
+        icon: collapsed ? "▸" : "▾",
+        title: `${opened.length} letter${opened.length === 1 ? "" : "s"} already opened`,
+        sub: collapsed ? "Tap to show them again" : "Tap to hide",
+        state: "toggle",
+        attrs: `data-toggle-opened="1" tabindex="0" role="button" aria-label="Toggle opened letters" aria-expanded="${!collapsed}"`
+      });
+      if (!collapsed) {
+        opened.forEach(letter => { inner += letterRow(letter); });
+      }
+    }
+
+    rest.forEach(letter => { inner += letterRow(letter); });
+
     const itinLocked = isFuture(CONFIG.itinerary.unlocksAt);
     inner += row({
       icon: itinLocked ? "🔒" : "🗺",
@@ -344,6 +378,16 @@
       el.addEventListener("click", () => { window.location.href = "itinerary.html"; });
       el.addEventListener("keypress", (e) => {
         if (e.key === "Enter" || e.key === " ") window.location.href = "itinerary.html";
+      });
+    });
+    document.querySelectorAll("[data-toggle-opened]").forEach(el => {
+      const toggle = () => {
+        lsSet(OPENED_COLLAPSE_KEY, isOpenedCollapsed() ? "0" : "1");
+        renderMap();
+      };
+      el.addEventListener("click", toggle);
+      el.addEventListener("keypress", (e) => {
+        if (e.key === "Enter" || e.key === " ") toggle();
       });
     });
   }
@@ -741,7 +785,21 @@
     if (id) {
       lsSet(PENDING_OPEN_KEY, "");
       openLetterById(id);
+      return true;
     }
+    return false;
+  }
+
+  // On initial load, jump straight to the newest unread letter instead of
+  // making him scroll/search the whole timeline for it. Runs once on load
+  // only (not on the periodic re-render) so it doesn't yank the page out
+  // from under him while he's reading something else.
+  function scrollToFirstUnread() {
+    const el = document.querySelector('[data-letter][data-status="unlocked"]');
+    if (!el) return;
+    setTimeout(() => {
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 150);
   }
 
   /* ---------------- INIT ---------------- */
@@ -757,7 +815,8 @@
     maybeShowNotifPrompt();
     initNotifPromptHandlers();
     maybeFireBrowserNotifications();
-    consumePendingOpen();
+    const openedFromNotification = consumePendingOpen();
+    if (!openedFromNotification) scrollToFirstUnread();
 
     const overlay = document.getElementById("modal-overlay");
     if (overlay) {
