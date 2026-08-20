@@ -224,15 +224,116 @@ const CONFIG = {
       ]
     },
     {
-      id: "passing-thought",
-      title: "A Passing Thought",
-      type: "useless",
-      unlock: "2026-08-22T05:45",
-      mapLabel: "Passing Thought",
+      id: "firsts",
+      title: "Firsts",
+      type: "story",
+      unlock: "2026-08-20T18:30",
+      mapLabel: "Firsts",
       body: [
-        "You know when you walk into a room and immediately forget why you went in there?",
-        "Anyway, that's all.",
+        "There are still so many firsts left for us.",
+        "First place we live together.",
+        "First Christmas in our own place.",
+        "First trip somewhere neither of us has been.",
+        "First time we have to assemble furniture.",
+        "First time we can wake up in each other's arms and not worry about going home.",
+        "First time in the love room",
+        "I like that we haven't gotten to those yet.",
+        "There's still so much ahead for us."
+      ]
+    },
+    {
+      id: "trip-to-the-future",
+      title: "A Trip to the Future",
+      type: "story",
+      unlock: "2026-08-21T05:45",
+      mapLabel: "Trip to Future",
+      body: [
+        "I wish we could meet the version of us five years from now for five minutes.",
+        "I'd want to know what we got right.",
+        "What we worried about that turned out not to matter.",
+        "What we're laughing about.",
+        "What our life looks like.",
+        "I wouldn't ask for spoilers, though.",
+        "I think I'd rather find out with you."
+      ]
+    },
+    {
+      id: "crush",
+      title: "Crush",
+      type: "story",
+      unlock: "2026-08-21T18:30",
+      mapLabel: "Crush",
+      body: [
+        "Just wanted to let you know I have a crush on you. I think you're kinda cute 😊"
+      ]
+    },
+    {
+      id: "you",
+      title: "You",
+      type: "story",
+      unlock: "2026-08-22T05:45",
+      mapLabel: "You",
+      body: [
+        "You are",
+        "my favorite notification,",
+        "my favorite voice,",
+        "my favorite face",
+        "in a crowded room.",
+        "You are",
+        "the person I look for",
+        "without thinking.",
+        "I don't know when",
+        "you became that.",
+        "I just know",
+        "you are."
+      ]
+    },
+    {
+      id: "before-we-knew",
+      title: "Before We Knew",
+      type: "story",
+      unlock: "2026-08-22T18:30",
+      mapLabel: "Before We Knew",
+      body: [
+        "There was a version of us that didn't know any of this was coming.",
+        "We didn't know we'd end up here.",
+        "We didn't know how much we'd come to mean to each other.",
+        "We didn't know what we'd be planning together.",
+        "I kind of love that.",
+        "Somewhere along the way, without either of us really noticing, you became my forever."
+      ]
+    },
+    {
+      id: "boyfriend-review",
+      title: "Boyfriend Review",
+      type: "story",
+      unlock: "2026-08-23T05:45",
+      mapLabel: "BF Review",
+      body: [
+        "Appearance: 10/10",
+        "Humor: questionable but effective",
+        "Cuddling: excellent",
+        "Listening: fantastic",
+        "Ability to distract me: exceptional",
+        "Overall experience: would recommend",
+        "★★★★★",
         "I love you. 😘"
+      ]
+    },
+    {
+      id: "when-im-old",
+      title: "When I'm Old",
+      type: "story",
+      unlock: "2026-08-23T18:30",
+      mapLabel: "When I'm Old",
+      body: [
+        "When I'm old, I hope I still recognize the little things about you.",
+        "I hope I still know when you're annoyed before you say anything.",
+        "I hope I still know what you're going to order.",
+        "I hope I still know which stories you've told a thousand times.",
+        "I hope you still make me laugh.",
+        "And I hope I still look at you sometimes and think,",
+        "Thank you, Lord, for sending me my other half."
       ]
     },
     {
