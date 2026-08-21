@@ -258,6 +258,34 @@ const CONFIG = {
       ]
     },
     {
+      id: "the-wanderer",
+      title: "The Wanderer",
+      type: "choice",
+      unlock: "2026-08-21T15:00",
+      mapLabel: "The Wanderer",
+      choiceKey: "sundayEvening",
+      deadline: "2026-08-21T22:00",
+      intro: [
+        "Remember that choice you made for Sunday morning?",
+        "You chose RISK.",
+        "I'm still not telling you what that means.",
+        "You have another choice.",
+        "Sunday evening has two paths.",
+        "One is CHARM.",
+        "The other is CHALLENGE.",
+        "Pick whichever sounds more like your kind of evening.",
+        "Decision required by August 21 at 10:00 PM."
+      ],
+      options: [
+        { value: "CHARM", label: "CHARM" },
+        { value: "CHALLENGE", label: "CHALLENGE" }
+      ],
+      lockedMessage: (choice) => choice === "CHARM"
+        ? `<div class="locked-caps">CHOICE LOCKED</div>You chose CHARM.<br>That's all you're getting for now.<br>You'll find out what you picked when the time comes. 😘`
+        : `<div class="locked-caps">CHOICE LOCKED</div>You chose CHALLENGE.<br>Bold.<br>You'll find out what you signed yourself up for when the time comes.`,
+      expiredMessage: "This one's closed now. I made the call for us — you'll find out what that means when Sunday evening gets here."
+    },
+    {
       id: "crush",
       title: "Crush",
       type: "story",
@@ -362,21 +390,6 @@ const CONFIG = {
         "Because they wear snow caps.",
         "I'll be here all week.",
         "I love you. 😘"
-      ]
-    },
-    {
-      id: "the-wanderer",
-      title: "The Wanderer",
-      type: "riddle",
-      unlock: "2026-08-27T05:45",
-      mapLabel: "The Wanderer",
-      body: [
-        "Here's a weird one.",
-        "Some things get better when you leave them alone for a while.",
-        "Sunday evening has something to do with that.",
-        "That's your clue.",
-        "No, I'm not explaining it.",
-        "You can think about it if you want."
       ]
     },
     {
@@ -550,11 +563,14 @@ const CONFIG = {
             id: "sun-evening",
             label: "Evening",
             secret: true,
+            choiceKey: "sundayEvening",
             revealAt: "2026-09-06T16:30",
             lockedLabel: "Evening plans",
-            lockedHint: "The Wanderer told you to be patient. Almost there.",
-            detail: "We're headed to a small winery nearby — a quiet evening, just the two of us.",
-            mapReveal: "Winery"
+            lockedHint: "The Wanderer already decided this one. The details show up evening-of.",
+            options: {
+              CHARM: { detail: "A carriage ride through the resort — slow, quiet, just the two of us.", mapReveal: "Carriage Ride" },
+              CHALLENGE: { detail: "Mini golf, bumper cars, arcade — game on.", mapReveal: "Game Night" }
+            }
           }
         ]
       },

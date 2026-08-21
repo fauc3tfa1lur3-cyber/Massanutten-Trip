@@ -339,7 +339,7 @@
       let sun = landmarkRow("🏡", "Condo");
       sun += choiceRow("sundayMorning", "Sunday morning");
       sun += landmarkRow("🌤", "Free Time");
-      sun += secretRow("sun-evening");
+      sun += choiceRow("sundayEvening", "Sunday evening");
       html += dayGroupHTML("Sunday", sun);
     }
 
