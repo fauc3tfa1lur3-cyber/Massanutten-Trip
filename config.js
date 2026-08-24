@@ -32,8 +32,8 @@ const CONFIG = {
   /* ---------------- TRIP BASICS ---------------- */
   trip: {
     destination: "Massanutten, Virginia",
-    startDate: "2026-09-05T00:00",   // Saturday — trip day 1 (itinerary unlocks at start of this day)
-    endDate:   "2026-09-07T23:59",   // Monday — trip day 3
+    startDate: "2026-09-04T00:00",   // Friday — trip day 1 (itinerary unlocks at start of this day)
+    endDate:   "2026-09-07T23:59",   // Monday — trip day 4
   },
 
   /* ---------------- VISUAL THEME ----------------
@@ -380,6 +380,27 @@ const CONFIG = {
       ]
     },
     {
+      id: "something-that-scares-me",
+      title: "Something That Scares Me",
+      type: "story",
+      unlock: "2026-08-24T18:30",
+      mapLabel: "Scares Me",
+      body: [
+        "Sometimes I think about how much I love you, and it scares me a little.",
+        "Not because I don't trust you. Not because I think something is going to go wrong.",
+        "I think it's because loving someone this much means giving them a part of you that they can actually affect.",
+        "You matter to me enough that what happens to you matters to me. Your happiness affects mine. Your sadness hurts my heart.",
+        "And, if I'm being completely honest, the thought of ever losing you is one of the few things that genuinely scares me.",
+        "I don't think there's a way to love someone deeply without taking that risk. You can't keep your heart completely protected and still let someone all the way in.",
+        "But I'm grateful that I've found someone worth taking the risk for.",
+        "Someone I trust. Someone I admire. Someone I genuinely love being around. Someone I can laugh with, dream with, make plans with, and eventually look back on all of this with.",
+        "So yes, loving you scares me a little.",
+        "But mostly, it makes me excited.",
+        "Because if this is what it feels like to have someone worth taking a chance on, then I'd take the chance again.",
+        "Every time. From now until forever. ❤️"
+      ]
+    },
+    {
       id: "dad-joke",
       title: "Dad Joke Department",
       type: "useless",
@@ -390,6 +411,63 @@ const CONFIG = {
         "Because they wear snow caps.",
         "I'll be here all week.",
         "I love you. 😘"
+      ]
+    },
+    {
+      id: "when-it-was-new",
+      title: "When It Was New",
+      type: "story",
+      unlock: "2026-08-25T18:30",
+      mapLabel: "When New",
+      body: [
+        "I still remember what it felt like when we first started dating.",
+        "Everything was new.",
+        "I remember the butterflies before seeing you, the stupid smile I'd get when your name showed up on my phone, and how I'd replay little moments with you afterward because I wasn't ready for them to be over yet.",
+        "There was something so exciting about not knowing what was coming next. Every date was something to look forward to. Every conversation felt like discovering another little piece of you.",
+        "I'd go home and realize I had spent hours with you and somehow still wanted more.",
+        "I loved that feeling of oh my God, I really like this person.",
+        "And I think what makes me happiest is that, even now, I still get pieces of that feeling.",
+        "Not in exactly the same way. The butterflies have settled into something deeper. The excitement of wondering whether you'd text has become the comfort of knowing you probably will. The nervousness of a first date has become the ease of knowing I can be completely myself with you.",
+        "But every once in a while, you'll look at me a certain way or say something that makes me laugh, and I'll get this little flash of that girl who was first falling for you.",
+        "And I love that she's still in there.",
+        "I love that after everything we've already been through, there are still things about you I get to discover. There are still places we'll go, memories we haven't made, inside jokes we haven't created, and ordinary days that haven't happened yet.",
+        "I think that's one of the best parts. I don't miss the beginning because I wish we were still there. I love the beginning because it was the first glimpse of everything we could become.",
+        "And somehow, I still get excited when I think about what's next. ❤️"
+      ]
+    },
+    {
+      id: "things-i-love-about-you",
+      title: "Things I Love About You",
+      type: "story",
+      unlock: "2026-08-26T18:30",
+      mapLabel: "Things I Love",
+      body: [
+        "Things I love about you:",
+        "Your laugh.",
+        "Your hands.",
+        "The way you concentrate.",
+        "The way you get excited when you're talking about something you like.",
+        "The way the right side of your mouth turns up when you're up to no good.",
+        "The way you remember things.",
+        "The way you work for the life you want.",
+        "The way you love people even when they make it difficult.",
+        "I could keep going.",
+        "I probably will."
+      ]
+    },
+    {
+      id: "the-lucky-part",
+      title: "The Lucky Part",
+      type: "story",
+      unlock: "2026-08-27T05:45",
+      mapLabel: "Lucky Part",
+      body: [
+        "People talk about luck like it's something that happens to you.",
+        "A winning number. The right place. The right time.",
+        "But sometimes I think luck is recognizing something good when it finds you.",
+        "And then being brave enough to hold onto it.",
+        "I found you.",
+        "That's my lucky part."
       ]
     },
     {
@@ -405,6 +483,22 @@ const CONFIG = {
         "Please do not submit another request at this time.",
         "Have a nice day.",
         "I love you. 😘"
+      ]
+    },
+    {
+      id: "no-one-told-me",
+      title: "No One Told Me",
+      type: "story",
+      unlock: "2026-08-28T18:30",
+      mapLabel: "No One Told Me",
+      body: [
+        "No one told me love could feel this ordinary.",
+        "Not ordinary as in unimportant. Ordinary as in: I saw something today and immediately thought of you.",
+        "I want to tell you what happened.",
+        "I know you'll laugh at this.",
+        "I wonder what you're doing.",
+        "Somehow you became part of the background of my entire life.",
+        "And somehow that's one of my favorite things about loving you."
       ]
     },
     {
@@ -431,6 +525,40 @@ const CONFIG = {
       expiredMessage: "This one's closed now. It's already decided — you'll see which way we went once Monday gets here."
     },
     {
+      id: "more-than-i-expected",
+      title: "More Than I Expected",
+      type: "story",
+      unlock: "2026-08-29T18:30",
+      mapLabel: "More Expected",
+      body: [
+        "I thought love would be fireworks.",
+        "Something obvious. Something loud.",
+        "I didn't expect to find it in being understood.",
+        "In being remembered.",
+        "In having someone who knows my moods and still comes closer.",
+        "I didn't expect love to make my world feel bigger.",
+        "But you did.",
+        "You made room for more life than I knew I wanted."
+      ]
+    },
+    {
+      id: "you-specifically",
+      title: "You, Specifically",
+      type: "story",
+      unlock: "2026-08-30T18:30",
+      mapLabel: "You, Specifically",
+      body: [
+        "I don't want the perfect life.",
+        "I don't even know what that would look like.",
+        "I want the life that has you in it.",
+        "Your shoes by the door. Your things on the counter. Your voice from another room.",
+        "I want the grocery runs and the long drives and the completely unnecessary arguments about where to eat.",
+        "I want the days that feel like nothing special until years later when we realize they were everything.",
+        "There are a million ways a life could turn out.",
+        "And I'd choose the one with you every time."
+      ]
+    },
+    {
       id: "in-between",
       title: "In Between",
       type: "useless",
@@ -442,6 +570,34 @@ const CONFIG = {
         "I don't have anything useful for you today. I just wanted to see if you'd actually keep coming back.",
         "Apparently you did.",
         "I love you. 😘"
+      ]
+    },
+    {
+      id: "the-photograph",
+      title: "The Photograph",
+      type: "story",
+      unlock: "2026-08-31T18:30",
+      mapLabel: "Photograph",
+      body: [
+        "I wish I could see",
+        "every version of us",
+        "that exists in other people's memories.",
+        "Us laughing",
+        "when someone happened to look over.",
+        "Us walking somewhere",
+        "without realizing",
+        "someone was watching.",
+        "The little moments",
+        "we didn't think were worth remembering.",
+        "I think we'd be surprised",
+        "by how often",
+        "we looked happy.",
+        "Maybe that's what photographs",
+        "really give us:",
+        "proof that we were there",
+        "for moments",
+        "we were too busy living",
+        "to notice."
       ]
     },
     {
@@ -466,10 +622,63 @@ const CONFIG = {
       body: [
         "I've really liked planning this.",
         "Not just the actual stuff we're doing, but having something that's just ours to look forward to. I love getting to plan things for us, especially when it means we get a few days where neither of us has to worry about anything else and we can just be together.",
-        "I know it's only three days, but I really like that it's three days that are just ours.",
+        "I know it's only four days, but I really like that it's four days that are just ours.",
         "That's my favorite part of this whole thing.",
         "Anyway, that's all. I'm done being sincere for now.",
         "I love you so so much. ❤️"
+      ]
+    },
+    {
+      id: "the-road",
+      title: "The Road",
+      type: "story",
+      unlock: "2026-09-02T18:30",
+      mapLabel: "The Road",
+      body: [
+        "I like being in the car",
+        "with you.",
+        "Not because",
+        "we're going anywhere particular.",
+        "I just like",
+        "being beside you",
+        "while the world",
+        "keeps moving past us.",
+        "Music on.",
+        "Windows down.",
+        "Some completely unnecessary",
+        "conversation happening.",
+        "There's something comforting",
+        "about knowing",
+        "I don't need to know",
+        "exactly where we're going",
+        "to enjoy getting there.",
+        "Especially when",
+        "you're driving."
+      ]
+    },
+    {
+      id: "five-minutes",
+      title: "Five Minutes",
+      type: "story",
+      unlock: "2026-09-03T05:45",
+      mapLabel: "Five Minutes",
+      body: [
+        "Give me five minutes",
+        "with you",
+        "and I can forget",
+        "what I was worried about.",
+        "Not because",
+        "you fix everything.",
+        "You just remind me",
+        "that whatever is happening",
+        "isn't the only thing",
+        "that's happening.",
+        "There's still laughter.",
+        "There's still tomorrow.",
+        "There's still us.",
+        "Sometimes that's enough",
+        "to make the world",
+        "feel manageable again."
       ]
     },
     {
@@ -482,7 +691,7 @@ const CONFIG = {
         "That's everything you're getting from me before we go.",
         "Pack your stuff, charge your phone, and don't forget your bottom retainers.",
         "From here on out, the map is going to be a lot more useful in person.",
-        "See you Saturday. ❤️"
+        "See you Friday. ❤️"
       ]
     }
   ],
@@ -497,9 +706,28 @@ const CONFIG = {
          label immediately, but "detail" stays hidden until revealAt
   ------------------------------------------------------------ */
   itinerary: {
-    unlocksAt: "2026-09-05T00:00", // whole page locked before this
+    unlocksAt: "2026-09-04T00:00", // whole page locked before this
 
     days: [
+      {
+        id: "friday",
+        label: "Friday",
+        date: "Sept 4",
+        items: [
+          {
+            id: "fri-arrival",
+            label: "Arrival",
+            detail: "Drive up to Massanutten, get settled in.",
+            secret: false
+          },
+          {
+            id: "fri-evening",
+            label: "Evening",
+            detail: "Low-key first night. No plans, on purpose.",
+            secret: false
+          }
+        ]
+      },
       {
         id: "saturday",
         label: "Saturday",
