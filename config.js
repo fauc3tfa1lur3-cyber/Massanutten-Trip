@@ -723,8 +723,12 @@ const CONFIG = {
           {
             id: "fri-evening",
             label: "Evening",
-            detail: "Low-key first night. No plans, on purpose.",
-            secret: false
+            secret: true,
+            revealAt: "2026-09-04T17:30",
+            lockedLabel: "SURPRISE",
+            lockedHint: "You'll find out when you get there.",
+            detail: "I planned something for you. It's ready when you are.",
+            mapReveal: "Surprise"
           }
         ]
       },
