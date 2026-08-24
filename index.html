@@ -38,6 +38,17 @@
       </div>
     </div>
 
+    <!-- one-time celebratory banner for a trip-detail change (e.g. new departure day) —
+         config-driven via CONFIG.announcement, shown once ever per id -->
+    <div class="trip-update-banner hidden" id="trip-update-banner" role="button" tabindex="0">
+      <div class="trip-update-text">
+        <span class="trip-update-title" id="trip-update-title"></span>
+        <span class="trip-update-message" id="trip-update-message"></span>
+      </div>
+      <button class="trip-update-close" id="trip-update-close" type="button" aria-label="Dismiss">&times;</button>
+    </div>
+    <div class="confetti-layer" id="confetti-layer" aria-hidden="true"></div>
+
     <!-- Countdown header -->
     <div class="relative z-10 rounded-3xl bg-card text-ink shadow-[0_20px_45px_rgba(0,0,0,0.35)] px-6 py-8 sm:px-10 sm:py-10 mb-8 text-center">
       <div class="text-[11px] font-bold uppercase tracking-[0.24em] text-wine-500">Massanutten, Virginia</div>

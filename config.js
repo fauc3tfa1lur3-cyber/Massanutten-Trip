@@ -36,6 +36,19 @@ const CONFIG = {
     endDate:   "2026-09-07T23:59",   // Monday — trip day 4
   },
 
+  /* ---------------- ANNOUNCEMENT BANNER ----------------
+     One-time celebratory banner (with a little confetti) shown once
+     ever, on the homepage, then dismissed for good. To retire it,
+     set active:false. To use it again for a future update, change
+     "id" to something new — a fresh id shows again even if an old
+     one was already seen/dismissed. */
+  announcement: {
+    id: "friday-update-1",
+    active: true,
+    title: "Change of plans.",
+    message: "We're leaving Friday now instead of Saturday — one extra day, just the two of us."
+  },
+
   /* ---------------- VISUAL THEME ----------------
      Change hex values to retheme the whole site. */
   theme: {

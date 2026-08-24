@@ -10,7 +10,7 @@
   // lets you tell a stale-cached copy on one device apart from an actual
   // clock/timezone disagreement when the same letter unlocks on one
   // device but not another.
-  const SITE_VERSION = "2026-08-18-fixed-tz";
+  const SITE_VERSION = "2026-08-24-confetti-banner";
 
   const LS_PREFIX = "mnadv_";
 
@@ -802,6 +802,74 @@
     }, 150);
   }
 
+  /* ---------------- TRIP-UPDATE ANNOUNCEMENT BANNER ----------------
+     A one-time celebratory banner (config-driven via CONFIG.announcement)
+     for calling out a trip-detail change — e.g. a new departure day.
+     Shows once ever per "id", with a small confetti burst, then stays
+     dismissed on every future visit. See config.js for how to edit or
+     retire it. */
+  const ANNOUNCEMENT_SEEN_PREFIX = "announcementSeen_";
+  const CONFETTI_COLORS = ["#d9a75c", "#f0cd94", "#8a2a49", "#e2a2ad", "#6c7c60"];
+
+  function fireConfetti() {
+    const layer = document.getElementById("confetti-layer");
+    if (!layer) return;
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const count = 46;
+    for (let i = 0; i < count; i++) {
+      const piece = document.createElement("div");
+      piece.className = "confetti-piece";
+      const size = 6 + Math.random() * 6;
+      const duration = 2.6 + Math.random() * 2;
+      const delay = Math.random() * 0.5;
+      piece.style.left = Math.random() * 100 + "vw";
+      piece.style.width = size + "px";
+      piece.style.height = size * 1.6 + "px";
+      piece.style.background = CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)];
+      piece.style.animationDuration = duration + "s";
+      piece.style.animationDelay = delay + "s";
+      layer.appendChild(piece);
+      setTimeout(() => piece.remove(), (duration + delay) * 1000 + 200);
+    }
+  }
+
+  function renderAnnouncementBanner() {
+    const cfg = CONFIG.announcement;
+    const banner = document.getElementById("trip-update-banner");
+    if (!cfg || !banner || !cfg.active) return;
+    if (lsGet(ANNOUNCEMENT_SEEN_PREFIX + cfg.id) === "1") return;
+
+    const titleEl = document.getElementById("trip-update-title");
+    const msgEl = document.getElementById("trip-update-message");
+    if (titleEl) titleEl.textContent = cfg.title || "";
+    if (msgEl) msgEl.textContent = cfg.message || "";
+    banner.classList.remove("hidden");
+    fireConfetti();
+  }
+
+  function dismissAnnouncementBanner() {
+    const cfg = CONFIG.announcement;
+    const banner = document.getElementById("trip-update-banner");
+    if (banner) banner.classList.add("hidden");
+    if (cfg) lsSet(ANNOUNCEMENT_SEEN_PREFIX + cfg.id, "1");
+  }
+
+  function initAnnouncementBannerHandlers() {
+    const banner = document.getElementById("trip-update-banner");
+    const closeBtn = document.getElementById("trip-update-close");
+    if (!banner) return;
+    banner.addEventListener("click", () => dismissAnnouncementBanner());
+    banner.addEventListener("keypress", (e) => {
+      if (e.key === "Enter" || e.key === " ") dismissAnnouncementBanner();
+    });
+    if (closeBtn) {
+      closeBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        dismissAnnouncementBanner();
+      });
+    }
+  }
+
   /* ---------------- INIT ---------------- */
   document.addEventListener("DOMContentLoaded", function () {
     renderCountdown();
@@ -815,6 +883,8 @@
     maybeShowNotifPrompt();
     initNotifPromptHandlers();
     maybeFireBrowserNotifications();
+    initAnnouncementBannerHandlers();
+    renderAnnouncementBanner();
     const openedFromNotification = consumePendingOpen();
     if (!openedFromNotification) scrollToFirstUnread();
 
