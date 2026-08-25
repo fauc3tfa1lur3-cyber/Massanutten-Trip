@@ -737,16 +737,14 @@ const CONFIG = {
           {
             id: "fri-lookout",
             label: "The Lookout",
-            icon: "",
-            time: "5:00 PM",
+            icon: "🌄",
             detail: "A quick detour for a view before we settle in.",
             secret: false
           },
           {
             id: "fri-checkin",
             label: "Home Base",
-            icon: "",
-            time: "5:15 PM",
+            icon: "🔑",
             detail: "Check in, unpack, and officially start the weekend.",
             secret: false
           },
@@ -790,8 +788,7 @@ const CONFIG = {
           {
             id: "sat-later-activity",
             label: "Paint & Sip",
-            icon: "",
-            time: "6:00 PM",
+            icon: "🎨",
             detail: "Something to drink, something to paint — questionable artistic decisions encouraged.<br><a href=\"https://www.youtube.com/watch?v=8itNgiazEc0&list=PLQ0zLDYGq2sHpigd3FOi9xTO1YK2JE5zX&index=5\" target=\"_blank\" rel=\"noopener\" class=\"itin-link\">A little preview →</a>",
             secret: false
           },
@@ -855,8 +852,7 @@ const CONFIG = {
           {
             id: "mon-checkout",
             label: "Check-Out",
-            icon: "",
-            time: "10:00 AM",
+            icon: "🧳",
             detail: "One last morning at the condo before we head out.",
             secret: false
           },

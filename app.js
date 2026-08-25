@@ -10,7 +10,7 @@
   // lets you tell a stale-cached copy on one device apart from an actual
   // clock/timezone disagreement when the same letter unlocks on one
   // device but not another.
-  const SITE_VERSION = "2026-08-25-flourish-redesign";
+  const SITE_VERSION = "2026-08-25-no-timestamps-emojis";
 
   const LS_PREFIX = "mnadv_";
 
@@ -602,14 +602,12 @@
         const label = itemDisplayLabel(item, status);
         const detail = itemDisplayDetail(item, status);
         const chipClass = status === "available" ? "" : status;
-        const timeHtml = item.time ? `<div class="itin-time">${item.time}</div>` : `<div class="itin-time itin-time-empty" aria-hidden="true"></div>`;
         // non-secret items can supply their own flavor icon (e.g. 🚗, ☀️, 🌿) —
         // "" hides it entirely. Secret/choice items always use the computed
         // status icon (🔒/🌟/etc.) so lock/reveal state stays honest.
         const icon = (status === "available" && item.icon !== undefined) ? item.icon : iconForStatus(status);
         const iconHtml = icon ? `<div class="itin-icon">${icon}</div>` : `<div class="itin-icon itin-icon-empty" aria-hidden="true"></div>`;
         html += `<div class="itin-item ${status}">
-          ${timeHtml}
           ${iconHtml}
           <div class="itin-text">
             <div class="itin-label">${label}${chipClass ? `<span class="chip ${chipClass}">${status}</span>` : ""}</div>
