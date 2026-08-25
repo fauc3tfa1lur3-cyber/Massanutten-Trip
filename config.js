@@ -427,10 +427,33 @@ const CONFIG = {
       ]
     },
     {
+      id: "above-or-below",
+      title: "Above or Below",
+      type: "choice",
+      unlock: "2026-08-25T18:30",
+      mapLabel: "Above or Below",
+      choiceKey: "mondayFinal",
+      deadline: "2026-09-01T23:59",
+      intro: [
+        "You've got another choice.",
+        "Monday morning, we're taking one last detour before heading home.",
+        "One option takes us ABOVE.",
+        "The other takes us BELOW.",
+        "Pick one. I'll handle the rest.",
+        "Make your choice by September 1."
+      ],
+      options: [
+        { value: "ABOVE", label: "ABOVE" },
+        { value: "BELOW", label: "BELOW" }
+      ],
+      lockedMessage: (choice) => `<div class="locked-caps">CHOICE LOCKED</div>You chose ${choice}.<br>Monday morning is officially decided.<br>You'll find out exactly what that means when we get there.`,
+      expiredMessage: "This one's closed now. It's already decided — you'll see which way we went once Monday gets here."
+    },
+    {
       id: "when-it-was-new",
       title: "When It Was New",
       type: "story",
-      unlock: "2026-08-25T18:30",
+      unlock: "2026-08-26T05:45",
       mapLabel: "When New",
       body: [
         "I still remember what it felt like when we first started dating.",
@@ -452,7 +475,7 @@ const CONFIG = {
       id: "things-i-love-about-you",
       title: "Things I Love About You",
       type: "story",
-      unlock: "2026-08-26T18:30",
+      unlock: "2026-08-27T05:45",
       mapLabel: "Things I Love",
       body: [
         "Things I love about you:",
@@ -472,7 +495,7 @@ const CONFIG = {
       id: "the-lucky-part",
       title: "The Lucky Part",
       type: "story",
-      unlock: "2026-08-27T05:45",
+      unlock: "2026-08-27T18:30",
       mapLabel: "Lucky Part",
       body: [
         "People talk about luck like it's something that happens to you.",
@@ -487,7 +510,7 @@ const CONFIG = {
       id: "customer-service",
       title: "Customer Service",
       type: "useless",
-      unlock: "2026-08-28T05:45",
+      unlock: "2026-08-28T18:30",
       mapLabel: "Customer Service",
       body: [
         "Thank you for using Girlfriend Travel Services.",
@@ -502,7 +525,7 @@ const CONFIG = {
       id: "no-one-told-me",
       title: "No One Told Me",
       type: "story",
-      unlock: "2026-08-28T18:30",
+      unlock: "2026-08-29T05:45",
       mapLabel: "No One Told Me",
       body: [
         "No one told me love could feel this ordinary.",
@@ -515,33 +538,10 @@ const CONFIG = {
       ]
     },
     {
-      id: "above-or-below",
-      title: "Above or Below",
-      type: "choice",
-      unlock: "2026-08-29T05:45",
-      mapLabel: "Above or Below",
-      choiceKey: "mondayFinal",
-      deadline: "2026-09-01T23:59",
-      intro: [
-        "You've got another choice.",
-        "Monday morning, we're taking one last detour before heading home.",
-        "One option takes us ABOVE.",
-        "The other takes us BELOW.",
-        "Pick one. I'll handle the rest.",
-        "Make your choice by September 1."
-      ],
-      options: [
-        { value: "ABOVE", label: "ABOVE" },
-        { value: "BELOW", label: "BELOW" }
-      ],
-      lockedMessage: (choice) => `<div class="locked-caps">CHOICE LOCKED</div>You chose ${choice}.<br>Monday morning is officially decided.<br>You'll find out exactly what that means when we get there.`,
-      expiredMessage: "This one's closed now. It's already decided — you'll see which way we went once Monday gets here."
-    },
-    {
       id: "more-than-i-expected",
       title: "More Than I Expected",
       type: "story",
-      unlock: "2026-08-29T18:30",
+      unlock: "2026-08-30T05:45",
       mapLabel: "More Expected",
       body: [
         "I thought love would be fireworks.",
@@ -558,7 +558,7 @@ const CONFIG = {
       id: "you-specifically",
       title: "You, Specifically",
       type: "story",
-      unlock: "2026-08-30T18:30",
+      unlock: "2026-08-31T05:45",
       mapLabel: "You, Specifically",
       body: [
         "I don't want the perfect life.",
@@ -575,7 +575,7 @@ const CONFIG = {
       id: "in-between",
       title: "In Between",
       type: "useless",
-      unlock: "2026-08-31T05:45",
+      unlock: "2026-08-31T18:30",
       mapLabel: "In Between",
       body: [
         "Still checking these?",
@@ -589,7 +589,7 @@ const CONFIG = {
       id: "the-photograph",
       title: "The Photograph",
       type: "story",
-      unlock: "2026-08-31T18:30",
+      unlock: "2026-09-01T05:45",
       mapLabel: "Photograph",
       body: [
         "I wish I could see",
@@ -617,7 +617,7 @@ const CONFIG = {
       id: "necessary-fact-2",
       title: "One More Completely Necessary Fact",
       type: "useless",
-      unlock: "2026-09-01T05:45",
+      unlock: "2026-09-01T18:30",
       mapLabel: "Necessary Fact",
       body: [
         "Bananas are berries.",
@@ -630,7 +630,7 @@ const CONFIG = {
       id: "the-question",
       title: "The Question",
       type: "story",
-      unlock: "2026-09-02T05:45",
+      unlock: "2026-09-02T18:30",
       mapLabel: "The Question",
       body: [
         "I've really liked planning this.",
@@ -645,7 +645,7 @@ const CONFIG = {
       id: "the-road",
       title: "The Road",
       type: "story",
-      unlock: "2026-09-02T18:30",
+      unlock: "2026-09-03T05:45",
       mapLabel: "The Road",
       body: [
         "I like being in the car",
@@ -673,7 +673,7 @@ const CONFIG = {
       id: "five-minutes",
       title: "Five Minutes",
       type: "story",
-      unlock: "2026-09-03T05:45",
+      unlock: "2026-09-03T18:30",
       mapLabel: "Five Minutes",
       body: [
         "Give me five minutes",
@@ -739,7 +739,7 @@ const CONFIG = {
             secret: true,
             revealAt: "2026-09-04T17:30",
             lockedLabel: "SURPRISE",
-            lockedHint: "You'll find out when you get there.",
+            lockedHint: "You'll find out when you get there. :)",
             detail: "I planned something for you. It's ready when you are.",
             mapReveal: "Surprise"
           }
@@ -769,11 +769,30 @@ const CONFIG = {
             secret: false
           },
           {
+            id: "sat-attraction",
+            label: "Attraction",
+            secret: true,
+            choiceKey: "mondayFinal",
+            revealAt: "2026-09-05T08:00",
+            lockedLabel: "Attraction",
+            lockedHint: "Same choice as Monday, flipped. Details show up morning-of.",
+            options: {
+              ABOVE: { detail: "Caverns tour nearby — cool, underground, and about as far from a scenic overlook as you can get.", mapReveal: "Caverns" },
+              BELOW: { detail: "Skyline Drive — a scenic overlook drive along the ridge.", mapReveal: "Skyline Drive" }
+            }
+          },
+          {
+            id: "sat-later-activity",
+            label: "Mini Golf & Arcade",
+            detail: "Bumper cars and arcade time too.",
+            secret: false
+          },
+          {
             id: "sat-evening",
             label: "Evening",
             secret: true,
             revealAt: "2026-09-05T17:30",
-            lockedLabel: "Evening plans",
+            lockedLabel: "SURPRISE",
             lockedHint: "This one's mine to give you in person.",
             detail: "I made you something. It's ready when you are.",
             mapReveal: "Surprise"
@@ -813,7 +832,7 @@ const CONFIG = {
             lockedLabel: "Evening plans",
             lockedHint: "The Wanderer already decided this one. The details show up evening-of.",
             options: {
-              CHARM: { detail: "A carriage ride through the resort — slow, quiet, just the two of us.", mapReveal: "Carriage Ride" },
+              CHARM: { detail: "Paint & Sip — no talent required, just show up.", mapReveal: "Paint & Sip" },
               CHALLENGE: { detail: "Mini golf, bumper cars, arcade — game on.", mapReveal: "Game Night" }
             }
           }
