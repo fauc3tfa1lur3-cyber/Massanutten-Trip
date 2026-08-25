@@ -729,22 +729,25 @@ const CONFIG = {
         items: [
           {
             id: "fri-arrival",
-            label: "Arrival",
-            detail: "Drive up to Massanutten, get settled in.",
+            label: "The Journey Begins",
+            icon: "🚗",
+            detail: "Drive up to Massanutten and make our way to the mountains.",
             secret: false
           },
           {
             id: "fri-lookout",
-            label: "Resort lookout",
+            label: "The Lookout",
+            icon: "",
             time: "5:00 PM",
-            detail: "A short detour to the view before we settle in.",
+            detail: "A quick detour for a view before we settle in.",
             secret: false
           },
           {
             id: "fri-checkin",
-            label: "Check-in",
+            label: "Home Base",
+            icon: "",
             time: "5:15 PM",
-            detail: "Condo check-in and unpacking.",
+            detail: "Check in, unpack, and officially start the weekend.",
             secret: false
           },
           {
@@ -753,7 +756,7 @@ const CONFIG = {
             secret: true,
             revealAt: "2026-09-04T17:30",
             lockedLabel: "SURPRISE",
-            lockedHint: "You'll find out when you get there. :)",
+            lockedHint: "I planned something for you. You'll find out when you get there. :)",
             detail: "I planned something for you. It's ready when you are.",
             mapReveal: "Surprise"
           }
@@ -765,19 +768,20 @@ const CONFIG = {
         date: "Sept 5",
         items: [
           {
-            id: "sat-arrival",
-            label: "Arrival",
-            detail: "Drive up to Massanutten.",
+            id: "sat-slow-start",
+            label: "Morning · Slow Start",
+            icon: "☀️",
+            detail: "No alarms. No rush. We have nowhere to be yet.",
             secret: false
           },
           {
             id: "sat-attraction",
-            label: "Exploration",
+            label: "The Detour",
             secret: true,
             choiceKey: "mondayFinal",
             revealAt: "2026-09-05T08:00",
-            lockedLabel: "Exploration",
-            lockedHint: "Same choice as Monday, flipped. Details show up morning-of.",
+            lockedLabel: "The Detour",
+            lockedHint: "Details unlock the morning of.",
             options: {
               ABOVE: { detail: "Caverns tour nearby — cool, underground, and about as far from a scenic overlook as you can get.", mapReveal: "Caverns" },
               BELOW: { detail: "Skyline Drive — a scenic overlook drive along the ridge.", mapReveal: "Skyline Drive" }
@@ -785,9 +789,10 @@ const CONFIG = {
           },
           {
             id: "sat-later-activity",
-            label: "Evening: Mini Golf & Arcade",
+            label: "The Massanutten Open",
+            icon: "",
             time: "6:00 PM",
-            detail: "Bumper cars and arcade time too.",
+            detail: "Mini golf, bumper cars, arcade games, and an entirely reasonable amount of competitiveness.",
             secret: false
           },
           {
@@ -796,7 +801,7 @@ const CONFIG = {
             secret: true,
             revealAt: "2026-09-05T17:30",
             lockedLabel: "SURPRISE",
-            lockedHint: "This one's mine to give you in person.",
+            lockedHint: "I made you something. It's ready when you are.",
             detail: "I made you something. It's ready when you are.",
             mapReveal: "Surprise"
           }
@@ -817,13 +822,14 @@ const CONFIG = {
             lockedHint: "Your choice is locked in. The details show up morning-of.",
             options: {
               RISE: { detail: "Scenic chairlift — 11:50 AM. Dress warm, it's breezy up top.", mapReveal: "Chairlift" },
-              RISK: { detail: "Chairlift + tubing — 10:00 AM to 2:00 PM. Wear shoes you can move in.", mapReveal: "Chairlift & Tubing" }
+              RISK: { detail: "Chairlift + Tubing, 10:00 AM–2:00 PM. You picked this one — now you have to live with it. Wear close-toed shoes you can actually move in.", mapReveal: "Chairlift + Tubing" }
             }
           },
           {
             id: "sun-free",
-            label: "Free time",
-            detail: "No plans. On purpose.",
+            label: "Afternoon · No Plans",
+            icon: "🌿",
+            detail: "On purpose.",
             secret: false
           },
           {
@@ -835,7 +841,7 @@ const CONFIG = {
             lockedLabel: "Evening plans",
             lockedHint: "The Wanderer already decided this one. The details show up evening-of.",
             options: {
-              CHARM: { detail: "Paint & Sip — no talent required, just show up.", mapReveal: "Paint & Sip" },
+              CHARM: { detail: "Paint & Sip. Something to drink, something to paint — questionable artistic decisions encouraged.", mapReveal: "Paint & Sip" },
               CHALLENGE: { detail: "Mini golf, bumper cars, arcade — game on.", mapReveal: "Game Night" }
             }
           }
@@ -847,13 +853,21 @@ const CONFIG = {
         date: "Sept 7",
         items: [
           {
+            id: "mon-checkout",
+            label: "Check-Out",
+            icon: "",
+            time: "10:00 AM",
+            detail: "One last morning at the condo before we head out.",
+            secret: false
+          },
+          {
             id: "mon-final",
-            label: "Final activity",
+            label: "Final Adventure",
             secret: true,
             choiceKey: "mondayFinal",
             revealAt: "2026-09-07T08:00",
-            lockedLabel: "Final activity",
-            lockedHint: "Your choice is locked in. Details show up the morning of.",
+            lockedLabel: "Final Adventure",
+            lockedHint: "One last stop before we leave the mountains. Details unlock the morning of.",
             options: {
               ABOVE: { detail: "Skyline Drive — a scenic overlook drive along the ridge.", mapReveal: "Skyline Drive" },
               BELOW: { detail: "Caverns tour nearby — cool, underground, very much the opposite of above.", mapReveal: "Caverns" }
@@ -861,7 +875,8 @@ const CONFIG = {
           },
           {
             id: "mon-home",
-            label: "Drive home",
+            label: "The Way Home",
+            icon: "🚗",
             detail: "Back home, adventure complete.",
             secret: false
           }

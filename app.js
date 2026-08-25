@@ -579,12 +579,14 @@
     // pine/star motif as the page watermark, just recolored per-instance
     const DAY_FLOURISH = `
       <svg class="day-flourish" viewBox="0 0 90 60" aria-hidden="true">
-        <path d="M14 46 L14 30 L7 38 L14 26 L8 32 L14 20 L20 32 L14 26 L21 38 L14 30" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
-        <line x1="14" y1="46" x2="14" y2="52" stroke="currentColor" stroke-width="1.3"/>
-        <path d="M46 12 l2.4 5.4 5.8.6-4.4 3.9 1.3 5.7L46 24.5l-5.1 3.1 1.3-5.7-4.4-3.9 5.8-.6z" fill="none" stroke="currentColor" stroke-width="1.1"/>
-        <circle cx="72" cy="10" r="1.4" fill="currentColor"/>
-        <circle cx="80" cy="20" r="1" fill="currentColor"/>
-        <circle cx="66" cy="22" r="0.8" fill="currentColor"/>
+        <polyline points="0,50 16,30 26,42 40,20 52,38 62,24 74,40 90,26 90,52 0,52" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round" opacity="0.55"/>
+        <path d="M16 46 L16 28 L9 36 L16 24 L10 30 L16 18 L22 30 L16 24 L23 36 L16 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        <line x1="16" y1="46" x2="16" y2="53" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M50 10 l2.6 5.8 6.2.6-4.7 4.2 1.4 6.1L50 23.5l-5.5 3.2 1.4-6.1-4.7-4.2 6.2-.6z" fill="none" stroke="currentColor" stroke-width="1.3"/>
+        <circle cx="74" cy="8" r="1.6" fill="currentColor"/>
+        <circle cx="82" cy="18" r="1.1" fill="currentColor"/>
+        <circle cx="68" cy="20" r="0.9" fill="currentColor"/>
+        <circle cx="80" cy="30" r="0.8" fill="currentColor"/>
       </svg>`;
 
     let html = "";
@@ -604,9 +606,14 @@
         const detail = itemDisplayDetail(item, status);
         const chipClass = status === "available" ? "" : status;
         const timeHtml = item.time ? `<div class="itin-time">${item.time}</div>` : `<div class="itin-time itin-time-empty" aria-hidden="true"></div>`;
+        // non-secret items can supply their own flavor icon (e.g. 🚗, ☀️, 🌿) —
+        // "" hides it entirely. Secret/choice items always use the computed
+        // status icon (🔒/🌟/etc.) so lock/reveal state stays honest.
+        const icon = (status === "available" && item.icon !== undefined) ? item.icon : iconForStatus(status);
+        const iconHtml = icon ? `<div class="itin-icon">${icon}</div>` : `<div class="itin-icon itin-icon-empty" aria-hidden="true"></div>`;
         html += `<div class="itin-item ${status}">
           ${timeHtml}
-          <div class="itin-icon">${iconForStatus(status)}</div>
+          ${iconHtml}
           <div class="itin-text">
             <div class="itin-label">${label}${chipClass ? `<span class="chip ${chipClass}">${status}</span>` : ""}</div>
             <div class="itin-detail">${detail}</div>
