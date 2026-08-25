@@ -10,7 +10,7 @@
   // lets you tell a stale-cached copy on one device apart from an actual
   // clock/timezone disagreement when the same letter unlocks on one
   // device but not another.
-  const SITE_VERSION = "2026-08-25-no-timestamps-emojis";
+  const SITE_VERSION = "2026-08-25-mountain-flourish";
 
   const LS_PREFIX = "mnadv_";
 
@@ -575,15 +575,18 @@
     lockScreen.style.display = "none";
     content.style.display = "block";
 
-    // small stationery-style flourish reused per day card — a thin scrollwork
-    // swash flanking a single compass star, echoing the site's ✦ mark
+    // small stationery-style flourish reused per day card — a thin-line
+    // mountain ridge (echoing the page's own watermark) with two small
+    // pines standing at the base
     const DAY_FLOURISH = `
       <svg class="day-flourish" viewBox="0 0 100 34" aria-hidden="true">
-        <path d="M3 17 C 17 6, 31 6, 43.5 17" fill="none" stroke="currentColor" stroke-width="1" opacity="0.55"/>
-        <path d="M3 17 C 17 28, 31 28, 43.5 17" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3"/>
-        <path d="M56.5 17 C 69 6, 83 6, 97 17" fill="none" stroke="currentColor" stroke-width="1" opacity="0.55"/>
-        <path d="M56.5 17 C 69 28, 83 28, 97 17" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3"/>
-        <path d="M50 8 L52.1 14.9 L59 17 L52.1 19.1 L50 26 L47.9 19.1 L41 17 L47.9 14.9 Z" fill="currentColor"/>
+        <polyline points="2,28 16,10 28,22 42,6 54,20 66,10 80,24 98,14" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round" opacity="0.6"/>
+        <polyline points="2,33 16,20 28,30 42,16 54,28 66,20 80,32 98,24" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" opacity="0.3"/>
+        <line x1="24" y1="33" x2="24" y2="29.5" stroke="currentColor" stroke-width="1" opacity="0.9"/>
+        <path d="M24 30 L19.3 24.2 L28.7 24.2 Z" fill="currentColor" opacity="0.9"/>
+        <path d="M24 25.6 L20.3 20.6 L27.7 20.6 Z" fill="currentColor" opacity="0.9"/>
+        <line x1="63" y1="33" x2="63" y2="30" stroke="currentColor" stroke-width="1" opacity="0.8"/>
+        <path d="M63 30.5 L59.3 25.5 L66.7 25.5 Z" fill="currentColor" opacity="0.8"/>
       </svg>`;
 
     let html = "";
