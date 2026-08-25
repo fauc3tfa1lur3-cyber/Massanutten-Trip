@@ -10,7 +10,7 @@
   // lets you tell a stale-cached copy on one device apart from an actual
   // clock/timezone disagreement when the same letter unlocks on one
   // device but not another.
-  const SITE_VERSION = "2026-08-25-mountain-flourish";
+  const SITE_VERSION = "2026-08-25-riddles-packing-restaurants";
 
   const LS_PREFIX = "mnadv_";
 
@@ -423,6 +423,13 @@
       inner += `${kicker}<h2 class="letter-title">${letter.title}</h2><div class="letter-body">`;
       letter.body.forEach(p => { inner += `<p>${p}</p>`; });
       inner += `</div>`;
+      // riddles keep their answer hidden until he clicks to reveal it
+      if (letter.type === "riddle" && letter.answer) {
+        inner += `<div class="riddle-answer-wrap">
+          <button class="riddle-reveal-btn" type="button">Reveal the Answer</button>
+          <div class="riddle-answer" hidden>${letter.answer}</div>
+        </div>`;
+      }
     }
     return inner;
   }
@@ -471,6 +478,15 @@
         }
       });
     });
+
+    const revealBtn = overlay.querySelector(".riddle-reveal-btn");
+    if (revealBtn) {
+      revealBtn.addEventListener("click", () => {
+        const answerEl = overlay.querySelector(".riddle-answer");
+        if (answerEl) answerEl.hidden = false;
+        revealBtn.hidden = true;
+      });
+    }
   }
 
   function closeLetterModal() {

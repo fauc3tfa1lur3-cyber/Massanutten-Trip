@@ -472,6 +472,20 @@ const CONFIG = {
       ]
     },
     {
+      id: "no-wings-required",
+      title: "No Wings Required",
+      type: "riddle",
+      unlock: "2026-08-26T18:30",
+      mapLabel: "No Wings Required",
+      body: [
+        "I have no feet, but I can take you higher.",
+        "I have no voice, but I can make you scream.",
+        "I have no wings, but for a little while, you'll leave the ground.",
+        "What am I?"
+      ],
+      answer: "A mountain."
+    },
+    {
       id: "things-i-love-about-you",
       title: "Things I Love About You",
       type: "story",
@@ -507,6 +521,19 @@ const CONFIG = {
       ]
     },
     {
+      id: "spend-it-wisely",
+      title: "Spend It Wisely",
+      type: "riddle",
+      unlock: "2026-08-28T05:45",
+      mapLabel: "Spend It Wisely",
+      body: [
+        "I have a beginning, an end, and somehow never enough hours in between.",
+        "You can spend me, waste me, make me, or wish you had more of me.",
+        "What am I?"
+      ],
+      answer: "A weekend."
+    },
+    {
       id: "customer-service",
       title: "Customer Service",
       type: "useless",
@@ -538,6 +565,19 @@ const CONFIG = {
       ]
     },
     {
+      id: "now-playing",
+      title: "Now Playing",
+      type: "riddle",
+      unlock: "2026-08-29T18:30",
+      mapLabel: "Now Playing",
+      body: [
+        "I start with a “p” and end with “o-r-n.”",
+        "I'm a major player in the film industry.",
+        "What am I?"
+      ],
+      answer: "Popcorn."
+    },
+    {
       id: "more-than-i-expected",
       title: "More Than I Expected",
       type: "story",
@@ -553,6 +593,17 @@ const CONFIG = {
         "But you did.",
         "You made room for more life than I knew I wanted."
       ]
+    },
+    {
+      id: "handle-with-care",
+      title: "Handle With Care",
+      type: "riddle",
+      unlock: "2026-08-30T18:30",
+      mapLabel: "Handle With Care",
+      body: [
+        "What gets longer if pulled, fits snugly between breasts, slides neatly into a hole, chokes people when used incorrectly, and works well when jerked?"
+      ],
+      answer: "A seatbelt, ya nasty :)"
     },
     {
       id: "you-specifically",
@@ -667,6 +718,30 @@ const CONFIG = {
         "to enjoy getting there.",
         "Especially when",
         "you're driving."
+      ]
+    },
+    {
+      id: "the-real-list",
+      title: "The Real List",
+      type: "story",
+      unlock: "2026-09-03T15:00",
+      mapLabel: "The Real List",
+      body: [
+        "Before you accuse me of hiding everything, this one is actually useful.",
+        "Bring:",
+        "• Your speaker",
+        "• Your laptop + HDMI cord",
+        "• Two nice outfits",
+        "• Trunks",
+        "• Closed-toed shoes",
+        "• Something you can actually move around in",
+        "• Comfortable clothes",
+        "• A jacket/light layer for the evenings",
+        "• Toiletries",
+        "• Chargers",
+        "• Bottom retainers!!",
+        "Basically, pack like we're going somewhere nice, somewhere outside, and somewhere where I might make you do things you weren't expecting.",
+        "That's all you get :)"
       ]
     },
     {
@@ -879,5 +954,25 @@ const CONFIG = {
         ]
       }
     ]
-  }
+  },
+
+  /* ---------------- RESTAURANT LIST (restaurants.html) ----------------
+     Just options, nothing pre-selected. "meals" drives the Spin the
+     Wheel filters (breakfast / lunch / dinner / dessert) — a place
+     can appear in more than one meal filter.
+     Fully independent of the itinerary/letters/decision system.
+  ------------------------------------------------------------ */
+  restaurants: [
+    { name: "Romano's Italian Bistro", category: "Italian", description: "Italian dinner spot.", meals: ["dinner"] },
+    { name: "VA BBQ & Pizza", category: "American", description: "Breakfast buffet; lunch and dinner.", meals: ["breakfast", "lunch", "dinner"] },
+    { name: "Elevations Lounge", category: "American", description: "On the resort. Bar food.", meals: ["lunch", "dinner"] },
+    { name: "Thirsty's Burgers", category: "American", description: "Burgers.", meals: ["lunch", "dinner"] },
+    { name: "Santa Fe Mexican", category: "Mexican", description: "Mexican.", meals: ["lunch", "dinner"] },
+    { name: "El Paso Mexican", category: "Mexican", description: "Mexican.", meals: ["lunch", "dinner"] },
+    { name: "The Bayou Kitchen", category: "Cajun", description: "Cajun.", meals: ["lunch", "dinner"] },
+    { name: "Thunderbird Cafe", category: "Breakfast", description: "Breakfast.", meals: ["breakfast"] },
+    { name: "Crossroads Cafe", category: "Lunch", description: "Lunch.", meals: ["lunch"] },
+    { name: "Sweetz", category: "Dessert", description: "On the resort. Desserts.", meals: ["dessert"] },
+    { name: "Kline's Dairy Bar", category: "Dessert", description: "Dessert.", meals: ["dessert"] }
+  ]
 };
