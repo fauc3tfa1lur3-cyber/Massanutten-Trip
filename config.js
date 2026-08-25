@@ -814,7 +814,7 @@ const CONFIG = {
             lockedHint: "Your choice is locked in. The details show up morning-of.",
             options: {
               RISE: { detail: "Scenic chairlift — 11:50 AM. Dress warm, it's breezy up top.", mapReveal: "Chairlift" },
-              RISK: { detail: "Zipline / tubing — 10:00 AM. Wear shoes you can move in.", mapReveal: "Zipline" }
+              RISK: { detail: "Chairlift + tubing — 10:00 AM to 2:00 PM. Wear shoes you can move in.", mapReveal: "Chairlift & Tubing" }
             }
           },
           {
