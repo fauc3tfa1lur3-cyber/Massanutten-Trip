@@ -38,14 +38,17 @@
       </div>
     </div>
 
-    <!-- one-time celebratory banner for a trip-detail change (e.g. new departure day) —
-         config-driven via CONFIG.announcement, shown once ever per id -->
-    <div class="trip-update-banner hidden" id="trip-update-banner" role="button" tabindex="0">
-      <div class="trip-update-text">
-        <span class="trip-update-title" id="trip-update-title"></span>
-        <span class="trip-update-message" id="trip-update-message"></span>
+    <!-- one-time celebratory modal for a trip-detail change (e.g. new departure day) —
+         config-driven via CONFIG.announcement, shown once ever per id.
+         Click the backdrop, press Escape, or use the close button to dismiss. -->
+    <div class="trip-update-overlay hidden" id="trip-update-overlay">
+      <div class="trip-update-banner" id="trip-update-banner" role="dialog" aria-modal="true" aria-labelledby="trip-update-title">
+        <button class="trip-update-close" id="trip-update-close" type="button" aria-label="Dismiss">&times;</button>
+        <div class="trip-update-text">
+          <span class="trip-update-title" id="trip-update-title"></span>
+          <span class="trip-update-message" id="trip-update-message"></span>
+        </div>
       </div>
-      <button class="trip-update-close" id="trip-update-close" type="button" aria-label="Dismiss">&times;</button>
     </div>
     <div class="confetti-layer" id="confetti-layer" aria-hidden="true"></div>
 

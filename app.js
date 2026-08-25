@@ -835,32 +835,36 @@
 
   function renderAnnouncementBanner() {
     const cfg = CONFIG.announcement;
-    const banner = document.getElementById("trip-update-banner");
-    if (!cfg || !banner || !cfg.active) return;
+    const overlay = document.getElementById("trip-update-overlay");
+    if (!cfg || !overlay || !cfg.active) return;
     if (lsGet(ANNOUNCEMENT_SEEN_PREFIX + cfg.id) === "1") return;
 
     const titleEl = document.getElementById("trip-update-title");
     const msgEl = document.getElementById("trip-update-message");
     if (titleEl) titleEl.textContent = cfg.title || "";
     if (msgEl) msgEl.textContent = cfg.message || "";
-    banner.classList.remove("hidden");
+    overlay.classList.remove("hidden");
     fireConfetti();
   }
 
   function dismissAnnouncementBanner() {
     const cfg = CONFIG.announcement;
-    const banner = document.getElementById("trip-update-banner");
-    if (banner) banner.classList.add("hidden");
+    const overlay = document.getElementById("trip-update-overlay");
+    if (overlay) overlay.classList.add("hidden");
     if (cfg) lsSet(ANNOUNCEMENT_SEEN_PREFIX + cfg.id, "1");
   }
 
   function initAnnouncementBannerHandlers() {
-    const banner = document.getElementById("trip-update-banner");
+    const overlay = document.getElementById("trip-update-overlay");
     const closeBtn = document.getElementById("trip-update-close");
-    if (!banner) return;
-    banner.addEventListener("click", () => dismissAnnouncementBanner());
-    banner.addEventListener("keypress", (e) => {
-      if (e.key === "Enter" || e.key === " ") dismissAnnouncementBanner();
+    if (!overlay) return;
+    // clicking the dimmed backdrop (but not the card itself) dismisses,
+    // same as any standard modal
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) dismissAnnouncementBanner();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !overlay.classList.contains("hidden")) dismissAnnouncementBanner();
     });
     if (closeBtn) {
       closeBtn.addEventListener("click", (e) => {

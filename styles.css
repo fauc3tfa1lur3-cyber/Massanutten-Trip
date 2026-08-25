@@ -208,68 +208,101 @@ a { color: var(--gold); }
 .notif-enable-btn:hover { color: var(--gold-soft); }
 .notif-dismiss-btn { color: rgba(247,226,229,0.5); }
 
-/* one-time celebratory announcement banner (e.g. a trip-detail update) —
+.notif-dismiss-btn:hover { color: rgba(247,226,229,0.8); }
+
+/* one-time celebratory announcement MODAL (e.g. a trip-detail update) —
    config-driven via CONFIG.announcement, shown once per unique id, then
-   dismissed for good via localStorage */
-.trip-update-banner {
-  position: relative;
+   dismissed for good via localStorage. Click the backdrop, press Escape,
+   or use the close button to dismiss. */
+.trip-update-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  border-radius: 20px;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(28,20,32,0.72);
+  backdrop-filter: blur(2px);
+  animation: trip-update-fade-in 0.25s ease;
+}
+.trip-update-overlay.hidden { display: none; }
+
+.trip-update-banner {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  border-radius: 26px;
   border: 1px solid rgba(217,167,92,0.55);
-  background: linear-gradient(135deg, rgba(217,167,92,0.16), rgba(138,42,73,0.16)), var(--card);
+  background: linear-gradient(135deg, rgba(217,167,92,0.18), rgba(138,42,73,0.18)), var(--card);
   color: var(--ink);
-  padding: 16px 20px;
-  margin-bottom: 22px;
-  cursor: pointer;
+  padding: 48px 44px 44px;
   box-shadow: var(--shadow-lift);
   overflow: hidden;
+  text-align: center;
+  animation: trip-update-pop-in 0.32s cubic-bezier(0.2, 0.8, 0.3, 1.15);
 }
-.trip-update-banner.hidden { display: none; }
 .trip-update-banner::before {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  padding: 1px;
+  padding: 1.5px;
   background: linear-gradient(120deg, var(--gold), var(--rose), var(--gold));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
 }
-.trip-update-text { display: flex; flex-direction: column; gap: 3px; }
+.trip-update-text { display: flex; flex-direction: column; gap: 14px; }
 .trip-update-title {
   font-family: var(--serif-display);
   font-weight: 700;
-  font-size: 1.15rem;
+  font-size: 2.3rem;
+  line-height: 1.15;
   color: var(--wine-dk);
 }
 .trip-update-message {
   font-family: var(--sans-body);
-  font-size: 0.86rem;
+  font-size: 1.15rem;
+  line-height: 1.5;
   color: var(--ink-soft);
 }
 .trip-update-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
   background: none;
   border: none;
-  font-size: 1.3rem;
+  font-size: 1.7rem;
   color: var(--ink-soft);
   cursor: pointer;
   line-height: 1;
-  padding: 2px 6px;
-  flex-shrink: 0;
+  padding: 4px 8px;
+  z-index: 1;
 }
 .trip-update-close:hover { color: var(--ink); }
+
+@keyframes trip-update-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes trip-update-pop-in {
+  from { opacity: 0; transform: scale(0.92) translateY(10px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+@media (max-width: 640px) {
+  .trip-update-banner { padding: 40px 26px 32px; }
+  .trip-update-title { font-size: 1.7rem; }
+  .trip-update-message { font-size: 1rem; }
+}
 
 .confetti-layer {
   position: fixed;
   inset: 0;
   pointer-events: none;
   overflow: hidden;
-  z-index: 80;
+  z-index: 95;
 }
 .confetti-piece {
   position: absolute;
@@ -287,8 +320,8 @@ a { color: var(--gold); }
 }
 @media (prefers-reduced-motion: reduce) {
   .confetti-piece { animation: none; display: none; }
+  .trip-update-overlay, .trip-update-banner { animation: none; }
 }
-.notif-dismiss-btn:hover { color: rgba(247,226,229,0.8); }
 
 .new-badge {
   display: inline-block;
