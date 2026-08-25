@@ -575,16 +575,37 @@
     lockScreen.style.display = "none";
     content.style.display = "block";
 
+    // small hand-drawn-style flourish reused per day card — same thin-line
+    // pine/star motif as the page watermark, just recolored per-instance
+    const DAY_FLOURISH = `
+      <svg class="day-flourish" viewBox="0 0 90 60" aria-hidden="true">
+        <path d="M14 46 L14 30 L7 38 L14 26 L8 32 L14 20 L20 32 L14 26 L21 38 L14 30" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+        <line x1="14" y1="46" x2="14" y2="52" stroke="currentColor" stroke-width="1.3"/>
+        <path d="M46 12 l2.4 5.4 5.8.6-4.4 3.9 1.3 5.7L46 24.5l-5.1 3.1 1.3-5.7-4.4-3.9 5.8-.6z" fill="none" stroke="currentColor" stroke-width="1.1"/>
+        <circle cx="72" cy="10" r="1.4" fill="currentColor"/>
+        <circle cx="80" cy="20" r="1" fill="currentColor"/>
+        <circle cx="66" cy="22" r="0.8" fill="currentColor"/>
+      </svg>`;
+
     let html = "";
     CONFIG.itinerary.days.forEach(day => {
-      html += `<div class="day-block"><h3>${day.label} <span class="date-sub">${day.date}</span></h3>`;
+      html += `<div class="day-block">
+        <div class="day-head">
+          ${DAY_FLOURISH}
+          <div class="day-name">${day.label}</div>
+          <div class="day-date">${day.date}</div>
+        </div>
+        <div class="day-body">
+          <div class="day-divider" aria-hidden="true"></div>
+          <div class="day-items">`;
       day.items.forEach(item => {
         let status = itemStatus(item);
-        // mark completed if not secret, day already fully passed AND item isn't a "future" placeholder
         const label = itemDisplayLabel(item, status);
         const detail = itemDisplayDetail(item, status);
         const chipClass = status === "available" ? "" : status;
+        const timeHtml = item.time ? `<div class="itin-time">${item.time}</div>` : `<div class="itin-time itin-time-empty" aria-hidden="true"></div>`;
         html += `<div class="itin-item ${status}">
+          ${timeHtml}
           <div class="itin-icon">${iconForStatus(status)}</div>
           <div class="itin-text">
             <div class="itin-label">${label}${chipClass ? `<span class="chip ${chipClass}">${status}</span>` : ""}</div>
@@ -592,7 +613,7 @@
           </div>
         </div>`;
       });
-      html += `</div>`;
+      html += `</div></div></div>`;
     });
     content.innerHTML = html;
   }

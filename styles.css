@@ -534,43 +534,100 @@ a { color: var(--gold); }
 .itin-lock-screen .icon { font-size: 2.2rem; margin-bottom: 10px; }
 
 .day-block {
-  margin-bottom: 24px;
+  position: relative;
+  margin-bottom: 30px;
   background: var(--card);
   border-radius: var(--radius-lg);
-  padding: 22px 22px 8px;
+  padding: 30px 28px 22px;
   box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(217,167,92,0.28);
+  overflow: hidden;
 }
-.day-block h3 {
+.day-block::before {
+  /* faint corner wash, ties each card back to the parchment/gold palette
+     without competing with the flourish or the text */
+  content: "";
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(217,167,92,0.14), transparent 70%);
+  pointer-events: none;
+}
+
+.day-head {
+  position: relative;
   display: flex;
   align-items: baseline;
-  gap: 10px;
-  margin-bottom: 14px;
-  color: var(--ink);
+  gap: 14px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
 }
-.day-block h3 .date-sub {
-  font-family: var(--sans-body);
-  font-size: 0.75rem;
+.day-flourish {
+  position: absolute;
+  top: -6px;
+  right: 0;
+  width: 64px;
+  height: 44px;
+  color: var(--gold);
+  opacity: 0.55;
+  pointer-events: none;
+}
+.day-name {
+  font-family: var(--serif-display);
+  font-style: italic;
   font-weight: 700;
-  color: var(--wine);
-  letter-spacing: 0.08em;
+  font-size: 2.1rem;
+  color: var(--wine-dk);
+  line-height: 1;
+}
+.day-date {
+  font-family: var(--sans-body);
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.16em;
   text-transform: uppercase;
+}
+
+.day-body {
+  display: grid;
+  grid-template-columns: 2px 1fr;
+  gap: 20px;
+}
+.day-divider {
+  background: linear-gradient(180deg, var(--gold), rgba(217,167,92,0.15));
+  border-radius: 2px;
 }
 
 .itin-item {
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  padding: 13px 4px;
+  padding: 11px 0;
   border-bottom: 1px solid rgba(36,24,35,0.08);
 }
 .itin-item:last-child { border-bottom: none; }
 
+.itin-time {
+  flex-shrink: 0;
+  width: 72px;
+  font-family: var(--serif-display);
+  font-weight: 700;
+  font-size: 0.86rem;
+  color: var(--wine);
+  padding-top: 1px;
+}
+.itin-time-empty { width: 72px; }
+
 .itin-icon {
-  width: 26px;
+  width: 22px;
   flex-shrink: 0;
   text-align: center;
-  font-size: 1.05rem;
-  margin-top: 2px;
+  font-size: 1rem;
+  margin-top: 1px;
 }
 
 .itin-text .itin-label {
@@ -584,10 +641,19 @@ a { color: var(--gold); }
 }
 .itin-item.locked .itin-label { color: var(--ink-soft); }
 .itin-item.locked .itin-detail { font-style: italic; }
+.itin-item.locked .itin-time { color: var(--ink-soft); }
 .itin-item.chosen .itin-label { color: var(--wine); }
 .itin-item.revealed .itin-label { color: var(--wine-dk); }
 .itin-item.completed .itin-label { color: #3d6b4f; }
 .itin-item.completed { opacity: 0.85; }
+
+@media (max-width: 560px) {
+  .day-block { padding: 24px 18px 16px; }
+  .day-name { font-size: 1.7rem; }
+  .day-body { grid-template-columns: 2px 1fr; gap: 14px; }
+  .itin-time, .itin-time-empty { width: 56px; font-size: 0.78rem; }
+  .day-flourish { width: 50px; height: 36px; }
+}
 
 .chip {
   font-size: 0.64rem;

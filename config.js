@@ -736,13 +736,15 @@ const CONFIG = {
           {
             id: "fri-lookout",
             label: "Resort lookout",
-            detail: "A short detour to the view before we settle in. Around 5.",
+            time: "5:00 PM",
+            detail: "A short detour to the view before we settle in.",
             secret: false
           },
           {
             id: "fri-checkin",
             label: "Check-in",
-            detail: "Condo check-in and unpacking. Around 5.",
+            time: "5:15 PM",
+            detail: "Condo check-in and unpacking.",
             secret: false
           },
           {
@@ -784,6 +786,7 @@ const CONFIG = {
           {
             id: "sat-later-activity",
             label: "Evening: Mini Golf & Arcade",
+            time: "6:00 PM",
             detail: "Bumper cars and arcade time too.",
             secret: false
           },
