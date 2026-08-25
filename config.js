@@ -841,7 +841,7 @@ const CONFIG = {
             lockedLabel: "Evening plans",
             lockedHint: "The Wanderer already decided this one. The details show up evening-of.",
             options: {
-              CHARM: { detail: "Paint & Sip. Something to drink, something to paint — questionable artistic decisions encouraged.", mapReveal: "Paint & Sip" },
+              CHARM: { detail: "Paint & Sip. Something to drink, something to paint — questionable artistic decisions encouraged.<br><a href=\"https://www.youtube.com/watch?v=8itNgiazEc0&list=PLQ0zLDYGq2sHpigd3FOi9xTO1YK2JE5zX&index=5\" target=\"_blank\" rel=\"noopener\" class=\"itin-link\">A little preview →</a>", mapReveal: "Paint & Sip" },
               CHALLENGE: { detail: "Mini golf, bumper cars, arcade — game on.", mapReveal: "Game Night" }
             }
           }

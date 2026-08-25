@@ -648,6 +648,18 @@ a { color: var(--gold); }
   color: var(--ink-soft);
   margin-top: 2px;
 }
+.itin-link {
+  display: inline-block;
+  margin-top: 6px;
+  font-family: var(--sans-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--wine);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  border-bottom: 1px solid rgba(138,42,73,0.35);
+}
+.itin-link:hover { color: var(--wine-dk); border-bottom-color: var(--wine-dk); }
 .itin-item.locked .itin-label { color: var(--ink-soft); }
 .itin-item.locked .itin-detail { font-style: italic; }
 .itin-item.locked .itin-time { color: var(--ink-soft); }
