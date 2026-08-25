@@ -734,6 +734,18 @@ const CONFIG = {
             secret: false
           },
           {
+            id: "fri-lookout",
+            label: "Resort lookout",
+            detail: "A short detour to the view before we settle in. Around 5.",
+            secret: false
+          },
+          {
+            id: "fri-checkin",
+            label: "Check-in",
+            detail: "Condo check-in and unpacking. Around 5.",
+            secret: false
+          },
+          {
             id: "fri-evening",
             label: "Evening",
             secret: true,
@@ -757,24 +769,12 @@ const CONFIG = {
             secret: false
           },
           {
-            id: "sat-lookout",
-            label: "Resort lookout",
-            detail: "A short detour to the view before we settle in.",
-            secret: false
-          },
-          {
-            id: "sat-checkin",
-            label: "Check-in",
-            detail: "Condo check-in and unpacking.",
-            secret: false
-          },
-          {
             id: "sat-attraction",
-            label: "Attraction",
+            label: "Exploration",
             secret: true,
             choiceKey: "mondayFinal",
             revealAt: "2026-09-05T08:00",
-            lockedLabel: "Attraction",
+            lockedLabel: "Exploration",
             lockedHint: "Same choice as Monday, flipped. Details show up morning-of.",
             options: {
               ABOVE: { detail: "Caverns tour nearby — cool, underground, and about as far from a scenic overlook as you can get.", mapReveal: "Caverns" },
@@ -783,7 +783,7 @@ const CONFIG = {
           },
           {
             id: "sat-later-activity",
-            label: "Mini Golf & Arcade",
+            label: "Evening: Mini Golf & Arcade",
             detail: "Bumper cars and arcade time too.",
             secret: false
           },
