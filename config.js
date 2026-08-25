@@ -46,7 +46,7 @@ const CONFIG = {
     id: "friday-update-1",
     active: true,
     title: "Change of plans.",
-    message: "We're leaving Friday now instead of Saturday — one extra day, just the two of us. 😊"
+    message: "We're leaving Friday now instead of Saturday. 😊"
   },
 
   /* ---------------- VISUAL THEME ----------------
