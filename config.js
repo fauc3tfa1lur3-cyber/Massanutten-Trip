@@ -908,14 +908,11 @@ const CONFIG = {
             id: "sun-evening",
             label: "Evening",
             secret: true,
-            choiceKey: "sundayEvening",
             revealAt: "2026-09-06T16:30",
             lockedLabel: "Evening plans",
             lockedHint: "The Wanderer already decided this one. The details show up evening-of.",
-            options: {
-              CHARM: { detail: "Mini golf, bumper cars, arcade — game on.", mapReveal: "Game Night" },
-              CHALLENGE: { detail: "Paint & Sip. Something to drink, something to paint — questionable artistic decisions encouraged.<br><a href=\"https://www.youtube.com/watch?v=8itNgiazEc0&list=PLQ0zLDYGq2sHpigd3FOi9xTO1YK2JE5zX&index=5\" target=\"_blank\" rel=\"noopener\" class=\"itin-link\">A little preview →</a>", mapReveal: "Paint & Sip" }
-            }
+            detail: "Mini golf, bumper cars, arcade games, and an entirely reasonable amount of competitiveness.",
+            mapReveal: "Mini Golf & Arcade"
           }
         ]
       },
