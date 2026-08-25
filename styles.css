@@ -567,12 +567,12 @@ a { color: var(--gold); }
 }
 .day-flourish {
   position: absolute;
-  top: -10px;
+  top: -2px;
   right: 0;
-  width: 92px;
-  height: 62px;
+  width: 128px;
+  height: 44px;
   color: var(--gold);
-  opacity: 0.85;
+  opacity: 0.8;
   pointer-events: none;
 }
 .day-name {
@@ -673,7 +673,7 @@ a { color: var(--gold); }
   .day-name { font-size: 1.7rem; }
   .day-body { grid-template-columns: 2px 1fr; gap: 14px; }
   .itin-time, .itin-time-empty { width: 56px; font-size: 0.78rem; }
-  .day-flourish { width: 66px; height: 44px; }
+  .day-flourish { width: 92px; height: 32px; top: 0; }
   .itin-icon, .itin-icon-empty { width: 26px; height: 26px; font-size: 1.05rem; }
 }
 

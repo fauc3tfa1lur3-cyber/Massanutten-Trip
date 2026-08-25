@@ -800,7 +800,7 @@ const CONFIG = {
             label: "Evening",
             secret: true,
             revealAt: "2026-09-05T17:30",
-            lockedLabel: "SURPRISE",
+            lockedLabel: "Special Surprise",
             lockedHint: "I made you something. It's ready when you are.",
             detail: "I made you something. It's ready when you are.",
             mapReveal: "Surprise"
@@ -822,7 +822,7 @@ const CONFIG = {
             lockedHint: "Your choice is locked in. The details show up morning-of.",
             options: {
               RISE: { detail: "Scenic chairlift — 11:50 AM. Dress warm, it's breezy up top.", mapReveal: "Chairlift" },
-              RISK: { detail: "Chairlift + Tubing, 10:00 AM–2:00 PM. You picked this one — now you have to live with it. Wear close-toed shoes you can actually move in.", mapReveal: "Chairlift + Tubing" }
+              RISK: { detail: "Chairlift + Tubing, 10:00 AM–2:00 PM. Remember to wear close-toed shoes.", mapReveal: "Chairlift + Tubing" }
             }
           },
           {
