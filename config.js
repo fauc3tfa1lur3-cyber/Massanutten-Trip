@@ -678,6 +678,27 @@ const CONFIG = {
       ]
     },
     {
+      id: "the-part-i-want-you-to-know",
+      title: "The Part I Want You to Know",
+      type: "story",
+      unlock: "2026-09-02T05:45",
+      mapLabel: "The Part I Want You to Know",
+      body: [
+        "I think sometimes you forget how much you bring to my life.",
+        "You're not just the person I love.",
+        "You're my safe place. You're the person I want to tell things to first. You're the person I want next to me when something good happens and when something sucks.",
+        "I love the life we have now, but I also love that we're building toward something.",
+        "There's so much we haven't done yet.",
+        "So many places we haven't been.",
+        "So many stupid little traditions we haven't accidentally started.",
+        "So many ordinary nights we haven't had yet.",
+        "I want all of it.",
+        "Not because I need some perfect future.",
+        "Just because I want all the time with you.",
+        "I love you so, so much."
+      ]
+    },
+    {
       id: "the-question",
       title: "The Question",
       type: "story",
