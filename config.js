@@ -794,7 +794,7 @@ const CONFIG = {
       id: "last-turn",
       title: "The Last Turn",
       type: "story",
-      unlock: "2026-09-04T05:45",
+      unlock: "2026-09-03T15:00",
       mapLabel: "Last Turn",
       body: [
         "That's everything you're getting from me before we go.",
@@ -805,7 +805,7 @@ const CONFIG = {
     },
     {
       id: "stay-right-there",
-      title: "Stay Right There",
+      title: "Just One More Moment...",
       type: "story",
       unlock: "2026-09-04T17:30",
       mapLabel: "Stay Right There",
@@ -819,7 +819,7 @@ const CONFIG = {
     },
     {
       id: "you-know-the-drill",
-      title: "You Know the Drill",
+      title: "Another Surprise Means More Waiting 😬",
       type: "story",
       unlock: "2026-09-05T17:45",
       mapLabel: "You Know the Drill",
@@ -840,10 +840,22 @@ const CONFIG = {
         "Monday's plan, all in one place so you're not flying blind.",
         "We check out at 10, then grab breakfast at Thunderbird before we head out.",
         "We'll get onto Skyline Drive through Swift Run Gap and head north through the park. No fixed schedule — we just drive and stop wherever looks good for a view.",
-        "The plan is to exit at Front Royal, but if you're done with mountain roads before then, we can bail early at Thornton Gap instead. Front Royal puts us under an hour from home. Thornton Gap is more like an hour and a half.",
-        "Big Meadows, Skyland, and Elkwallow are the three main stops along the way — Big Meadows is roughly in the middle of the drive, Skyland's a bit north of that, and Elkwallow is closer to the northern end, nearer Thornton Gap. All three have food, bathrooms, and a place to stretch our legs, so we're covered wherever we end up stopping.",
-        "One real reminder: fill up the tank before we get on Skyline Drive. Gas isn't guaranteed along the way, so let's not test that.",
-        "Car note: leave it in D. If we hit a long, steep downhill where the car keeps picking up speed, you can bump it to D3 to help slow us down. Otherwise there's no need to mess with the gears — normal hills and curves don't need anything special.",
+        "Exit options:",
+        [
+          "Front Royal — the plan. Puts us under an hour from home.",
+          "Thornton Gap — if we're ready to be done with mountain roads early. More like an hour and a half from home."
+        ],
+        "Main stops along the way, all with food, bathrooms, and a place to stretch our legs:",
+        [
+          "Big Meadows — roughly the middle of the drive.",
+          "Skyland — a bit north of that.",
+          "Elkwallow — closer to the northern end, nearer Thornton Gap."
+        ],
+        "A couple of real reminders:",
+        [
+          "Fill up the tank before we get on Skyline Drive — gas isn't guaranteed along the way, so let's not test that.",
+          "Car note: leave it in D. If we hit a long, steep downhill where the car keeps picking up speed, bump it to D3 to help slow us down. Otherwise no need to mess with the gears — normal hills and curves don't need anything special."
+        ],
         "That's the whole plan. Drive as far as we want, stop when we want, home at a decent hour either way. :)"
       ]
     }

@@ -451,6 +451,25 @@ a { color: var(--gold); }
   color: #3a2c37;
 }
 .letter-body p:last-child { margin-bottom: 0; }
+.letter-body ul.letter-list {
+  margin: 0 0 1em;
+  padding-left: 1.3em;
+  list-style: none;
+}
+.letter-body ul.letter-list li {
+  position: relative;
+  margin: 0 0 0.6em;
+  font-size: 1.03rem;
+  color: #3a2c37;
+  line-height: 1.5;
+}
+.letter-body ul.letter-list li:last-child { margin-bottom: 0; }
+.letter-body ul.letter-list li::before {
+  content: "—";
+  position: absolute;
+  left: -1.3em;
+  color: var(--gold);
+}
 
 /* decision styling */
 .decision-flag {

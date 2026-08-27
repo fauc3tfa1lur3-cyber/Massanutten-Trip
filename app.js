@@ -10,7 +10,7 @@
   // lets you tell a stale-cached copy on one device apart from an actual
   // clock/timezone disagreement when the same letter unlocks on one
   // device but not another.
-  const SITE_VERSION = "2026-08-27-trip-map-fix";
+  const SITE_VERSION = "2026-08-27-letter-tweaks-bullets";
 
   const LS_PREFIX = "mnadv_";
 
@@ -283,9 +283,11 @@
   const OPENED_COLLAPSE_KEY = "openedCollapsed";
 
   function isOpenedCollapsed() {
-    // default: collapsed, so already-read letters don't pile up and bury
-    // whatever's actually new
-    return lsGet(OPENED_COLLAPSE_KEY) !== "0";
+    // default: expanded, so already-read letters stay easy to reopen
+    // and revisit instead of disappearing behind a toggle he has to
+    // remember exists. He can still collapse them himself if the list
+    // gets long.
+    return lsGet(OPENED_COLLAPSE_KEY) === "1";
   }
 
   function renderPreTripMap(container) {
@@ -383,6 +385,27 @@
     const now = getNow();
     let html = "";
 
+    // Letters that unlocked before the trip began (the pretrip "Open When"
+    // letters) don't stop existing just because the trip started — he can
+    // still get back to any of them here. Collapsed by default since there
+    // can be dozens; the toggle (shared with the pretrip map's same control)
+    // remembers his last choice either way.
+    const preTripLetters = CONFIG.letters.filter(letter => parseDate(letter.unlock).getTime() < dayStarts[0].getTime());
+    if (preTripLetters.length) {
+      const collapsed = isOpenedCollapsed();
+      let pre = row({
+        icon: collapsed ? "▸" : "▾",
+        title: `${preTripLetters.length} letter${preTripLetters.length === 1 ? "" : "s"} from before the trip`,
+        sub: collapsed ? "Tap to show them again" : "Tap to hide",
+        state: "toggle",
+        attrs: `data-toggle-opened="1" tabindex="0" role="button" aria-label="Toggle earlier letters" aria-expanded="${!collapsed}"`
+      });
+      if (!collapsed) {
+        preTripLetters.forEach(letter => { pre += letterRow(letter); });
+      }
+      html += dayGroupHTML("Before the Trip", pre);
+    }
+
     for (let i = 0; i < TRIP_DAY_IDS.length; i++) {
       if (now.getTime() < dayStarts[i].getTime()) break; // this day hasn't arrived yet
 
@@ -464,7 +487,16 @@
       inner += buildChoiceLetterHTML(letter);
     } else {
       inner += `${kicker}<h2 class="letter-title">${letter.title}</h2><div class="letter-body">`;
-      letter.body.forEach(p => { inner += `<p>${p}</p>`; });
+      // A body entry that's itself an array renders as a bullet list
+      // instead of a paragraph — lets a letter mix prose with a skimmable
+      // list (e.g. stops along a route) without any extra config fields.
+      letter.body.forEach(p => {
+        if (Array.isArray(p)) {
+          inner += `<ul class="letter-list">${p.map(li => `<li>${li}</li>`).join("")}</ul>`;
+        } else {
+          inner += `<p>${p}</p>`;
+        }
+      });
       inner += `</div>`;
       // riddles keep their answer hidden until he clicks to reveal it
       if (letter.type === "riddle" && letter.answer) {
