@@ -802,6 +802,50 @@ const CONFIG = {
         "From here on out, the map is going to be a lot more useful in person.",
         "See you Friday. ❤️"
       ]
+    },
+    {
+      id: "stay-right-there",
+      title: "Stay Right There",
+      type: "story",
+      unlock: "2026-09-04T17:30",
+      mapLabel: "Stay Right There",
+      body: [
+        "Okay. Go wait in the room.",
+        "Give me about fifteen minutes.",
+        "No peeking, no following, no asking questions.",
+        "I'll come get you when I'm ready.",
+        "Consider this the first of a few times this weekend I'm going to make you wait for something. You're welcome in advance."
+      ]
+    },
+    {
+      id: "you-know-the-drill",
+      title: "You Know the Drill",
+      type: "story",
+      unlock: "2026-09-05T17:45",
+      mapLabel: "You Know the Drill",
+      body: [
+        "You know the drill :)",
+        "Go wait in the room for a few minutes.",
+        "Shouldn't take nearly as long as yesterday.",
+        "I'll come find you."
+      ]
+    },
+    {
+      id: "the-skyline-drive-plan",
+      title: "The Skyline Drive Plan",
+      type: "story",
+      unlock: "2026-09-07T07:30",
+      mapLabel: "Skyline Drive Plan",
+      body: [
+        "Monday's plan, all in one place so you're not flying blind.",
+        "We check out at 10, then grab breakfast at Thunderbird before we head out.",
+        "We'll get onto Skyline Drive through Swift Run Gap and head north through the park. No fixed schedule — we just drive and stop wherever looks good for a view.",
+        "The plan is to exit at Front Royal, but if you're done with mountain roads before then, we can bail early at Thornton Gap instead. Front Royal puts us under an hour from home. Thornton Gap is more like an hour and a half.",
+        "Big Meadows, Skyland, and Elkwallow are the three main stops along the way — Big Meadows is roughly in the middle of the drive, Skyland's a bit north of that, and Elkwallow is closer to the northern end, nearer Thornton Gap. All three have food, bathrooms, and a place to stretch our legs, so we're covered wherever we end up stopping.",
+        "One real reminder: fill up the tank before we get on Skyline Drive. Gas isn't guaranteed along the way, so let's not test that.",
+        "Car note: leave it in D. If we hit a long, steep downhill where the car keeps picking up speed, you can bump it to D3 to help slow us down. Otherwise there's no need to mess with the gears — normal hills and curves don't need anything special.",
+        "That's the whole plan. Drive as far as we want, stop when we want, home at a decent hour either way. :)"
+      ]
     }
   ],
 
@@ -851,7 +895,7 @@ const CONFIG = {
             revealAt: "2026-09-04T17:30",
             lockedLabel: "SURPRISE",
             lockedHint: "I planned something for you. You'll find out when you get there. :)",
-            detail: "I planned something for you. It's ready when you are.",
+            detail: "The first of many surprises this weekend. I'll come get you when I'm ready :)",
             mapReveal: "Surprise"
           }
         ]
@@ -882,6 +926,13 @@ const CONFIG = {
             }
           },
           {
+            id: "sat-afternoon",
+            label: "Afternoon · Free Time",
+            icon: "🍴",
+            detail: "Lunch, relax, explore. If we're up for it, there's an optional winery stop too — check the restaurant list.",
+            secret: false
+          },
+          {
             id: "sat-later-activity",
             label: "Paint & Sip",
             icon: "🎨",
@@ -893,9 +944,9 @@ const CONFIG = {
             label: "Evening",
             secret: true,
             revealAt: "2026-09-05T17:30",
-            lockedLabel: "Special Surprise",
-            lockedHint: "I made you something. It's ready when you are.",
-            detail: "I made you something. It's ready when you are.",
+            lockedLabel: "CHARM",
+            lockedHint: "I hope I'm baking up some anticipation... 😏",
+            detail: "I hope I'm baking up some anticipation... 😏",
             mapReveal: "Surprise"
           }
         ]
@@ -907,7 +958,7 @@ const CONFIG = {
         items: [
           {
             id: "sun-morning",
-            label: "Morning",
+            label: "Morning Adventure",
             secret: true,
             choiceKey: "sundayMorning",
             revealAt: "2026-09-06T07:00",
@@ -915,7 +966,7 @@ const CONFIG = {
             lockedHint: "Your choice is locked in. The details show up morning-of.",
             options: {
               RISE: { detail: "Scenic chairlift — 11:50 AM. Dress warm, it's breezy up top.", mapReveal: "Chairlift" },
-              RISK: { detail: "Chairlift + Tubing, 10:00 AM–2:00 PM. Remember to wear close-toed shoes.", mapReveal: "Chairlift + Tubing" }
+              RISK: { detail: "Chairlift + Tubing, 10:00 AM–2:00 PM. Wear closed-toed shoes and something you can move in.", mapReveal: "Chairlift + Tubing" }
             }
           },
           {
@@ -950,6 +1001,13 @@ const CONFIG = {
             secret: false
           },
           {
+            id: "mon-breakfast",
+            label: "Breakfast at Thunderbird",
+            icon: "🥞",
+            detail: "Quick bite before we hit the road.",
+            secret: false
+          },
+          {
             id: "mon-final",
             label: "Final Adventure",
             secret: true,
@@ -958,7 +1016,7 @@ const CONFIG = {
             lockedLabel: "Final Adventure",
             lockedHint: "One last stop before we leave the mountains. Details unlock the morning of.",
             options: {
-              ABOVE: { detail: "Skyline Drive — a scenic overlook drive along the ridge.", mapReveal: "Skyline Drive" },
+              ABOVE: { detail: "Skyline Drive — in at Swift Run Gap, then north through the park, stopping for overlooks along the way. Planned exit: Front Royal (or Thornton Gap if we're ready to be done with mountain driving).", mapReveal: "Skyline Drive" },
               BELOW: { detail: "Caverns tour nearby — cool, underground, very much the opposite of above.", mapReveal: "Caverns" }
             }
           },

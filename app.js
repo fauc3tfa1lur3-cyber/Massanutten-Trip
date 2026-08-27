@@ -10,7 +10,7 @@
   // lets you tell a stale-cached copy on one device apart from an actual
   // clock/timezone disagreement when the same letter unlocks on one
   // device but not another.
-  const SITE_VERSION = "2026-08-25-riddles-packing-restaurants";
+  const SITE_VERSION = "2026-08-27-trip-map-fix";
 
   const LS_PREFIX = "mnadv_";
 
@@ -324,33 +324,76 @@
     container.innerHTML = dayGroupHTML("The Path So Far", inner);
   }
 
+  // Mirrors choiceRow(), but scoped to ONE specific itinerary item rather
+  // than "whichever item currently matches this choiceKey". This matters
+  // because a single choiceKey (e.g. "mondayFinal") can be reused across
+  // two different itinerary items with inverted options (see sat-attraction
+  // / mon-final) — resolving by item, not by key, keeps each row showing
+  // its own reveal state/label instead of borrowing the other item's.
+  function itineraryChoiceRow(item) {
+    const chosen = getChoice(item.choiceKey);
+    if (!chosen) {
+      return row({ icon: "🔒", title: "???", sub: item.label || "Decision pending", state: "locked" });
+    }
+    if (isPast(item.revealAt)) {
+      const opt = item.options[chosen];
+      const label = opt ? (opt.mapReveal || chosen) : chosen;
+      return row({ icon: "🌟", title: label, state: "revealed" });
+    }
+    return row({
+      icon: "🔖",
+      title: `Chosen: ${chosen}`,
+      sub: "Details reveal morning-of",
+      state: "chosenPending"
+    });
+  }
+
+  function itineraryRow(item) {
+    if (!item.secret) {
+      if (item.id === "mon-home") return anchorRow(item.icon || "🚗", item.label);
+      return landmarkRow(item.icon || "•", item.label);
+    }
+    if (item.choiceKey) return itineraryChoiceRow(item);
+    return secretRow(item.id);
+  }
+
+  // Once the trip starts, the map switches from "letters only" to a
+  // day-by-day view built straight from CONFIG.itinerary — one section
+  // per trip day, in order, each showing its itinerary items PLUS any
+  // letters that unlock sometime during that calendar day. A day's
+  // section only appears once that day has actually begun, so nothing
+  // shows up early.
+  const TRIP_DAY_IDS = ["friday", "saturday", "sunday", "monday"];
+
   function renderTripMap(container) {
-    let html = "";
-
-    // Saturday
-    let sat = anchorRow("🏳", "Start");
-    sat += landmarkRow("🏔", "Lookout");
-    sat += landmarkRow("🏡", "Condo");
-    sat += secretRow("sat-evening");
-    html += dayGroupHTML("Saturday", sat);
-
-    // Sunday — only show once Saturday has happened or is today
-    if (isPast(CONFIG.trip.startDate)) {
-      let sun = landmarkRow("🏡", "Condo");
-      sun += choiceRow("sundayMorning", "Sunday morning");
-      sun += landmarkRow("🌤", "Free Time");
-      sun += choiceRow("sundayEvening", "Sunday evening");
-      html += dayGroupHTML("Sunday", sun);
+    const dayStarts = [parseDate(CONFIG.trip.startDate)];
+    for (let i = 1; i < TRIP_DAY_IDS.length; i++) {
+      dayStarts.push(new Date(dayStarts[i - 1].getTime() + 24 * 60 * 60 * 1000));
     }
 
-    // Monday
-    const mondayStarted = isPast("2026-09-07T00:00");
-    const sunEveningRevealAt = CONFIG.itinerary.days.find(d => d.id === 'sunday').items.find(i => i.id === 'sun-evening').revealAt;
-    if (mondayStarted || isPast(sunEveningRevealAt)) {
-      let mon = landmarkRow("🏡", "Condo");
-      mon += choiceRow("mondayFinal", "Monday");
-      mon += anchorRow("🚗", "Home");
-      html += dayGroupHTML("Monday", mon);
+    function lettersForDay(i) {
+      const from = dayStarts[i].getTime();
+      const to = i + 1 < dayStarts.length ? dayStarts[i + 1].getTime() : Infinity;
+      return CONFIG.letters.filter(letter => {
+        const t = parseDate(letter.unlock).getTime();
+        return t >= from && t < to;
+      });
+    }
+
+    const now = getNow();
+    let html = "";
+
+    for (let i = 0; i < TRIP_DAY_IDS.length; i++) {
+      if (now.getTime() < dayStarts[i].getTime()) break; // this day hasn't arrived yet
+
+      const dayConfig = CONFIG.itinerary.days.find(d => d.id === TRIP_DAY_IDS[i]);
+      if (!dayConfig) continue;
+
+      let inner = i === 0 ? anchorRow("🏳", "Start") : "";
+      dayConfig.items.forEach(item => { inner += itineraryRow(item); });
+      lettersForDay(i).forEach(letter => { inner += letterRow(letter); });
+
+      html += dayGroupHTML(dayConfig.label, inner);
     }
 
     container.innerHTML = html;
