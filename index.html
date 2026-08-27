@@ -35,7 +35,7 @@
           🔔<span class="notif-bell-count hidden" id="notif-bell-count">0</span>
         </button>
         <a href="itinerary.html" class="nav-link" id="itin-nav-link">Itinerary</a>
-        <a href="restaurants.html" class="nav-link">Restaurants</a>
+        <a href="restaurants.html" class="nav-link" id="rest-nav-link">Restaurants</a>
       </div>
     </div>
 
@@ -104,6 +104,7 @@
     }
     document.addEventListener("DOMContentLoaded", function () {
       var link = document.getElementById("itin-nav-link");
+      var restLink = document.getElementById("rest-nav-link");
       var now = new Date();
       var params = new URLSearchParams(window.location.search);
       var sim = params.get("simDate");
@@ -111,6 +112,9 @@
       if (now < parseConfigDate(CONFIG.itinerary.unlocksAt)) {
         link.classList.add("disabled");
         link.setAttribute("aria-disabled", "true");
+        // restaurants only make sense once we're actually there — stay
+        // fully hidden (not just grayed out) until the itinerary unlocks
+        if (restLink) restLink.classList.add("hidden");
       }
     });
   </script>

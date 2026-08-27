@@ -25,35 +25,45 @@
       </div>
     </div>
 
-    <p class="rest-intro">Just options — nothing here is booked or decided. Pick something if you're in the mood, or let the wheel choose for you.</p>
-
-    <div id="rest-list"></div>
-
-    <div class="rest-wheel-block">
-      <div class="rest-wheel-head">
-        <div class="rest-wheel-title">Can't Decide?</div>
-        <div class="rest-wheel-sub">Filter if you want, then give it a spin.</div>
-      </div>
-
-      <div class="rest-filter-row" id="rest-filter-row"></div>
-
-      <div class="wheel-shell">
-        <div class="wheel-pointer" aria-hidden="true">▾</div>
-        <div class="wheel-disc" id="wheel-disc"></div>
-        <div class="wheel-hub" aria-hidden="true">✦</div>
-      </div>
-
-      <button class="spin-btn" id="spin-btn" type="button">Spin the Wheel</button>
-
-      <div class="wheel-result" id="wheel-result" hidden>
-        <div class="wheel-result-label">Tonight, it's</div>
-        <div class="wheel-result-name" id="wheel-result-name"></div>
-        <div class="wheel-result-desc" id="wheel-result-desc"></div>
-        <button class="spin-again-btn" id="spin-again-btn" type="button">Spin Again</button>
-      </div>
+    <div class="itin-lock-screen" id="rest-lock-screen">
+      <div class="icon">🔒</div>
+      <h2>Not yet.</h2>
+      <p>This page unlocks the morning we leave for Massanutten.</p>
     </div>
 
-    <p class="footer-note">Just for fun during the trip — doesn't affect anything else on the map.</p>
+    <div id="rest-content" style="display:none;">
+
+      <p class="rest-intro">Just options — nothing here is booked or decided. Pick something if you're in the mood, or let the wheel choose for you.</p>
+
+      <div id="rest-list"></div>
+
+      <div class="rest-wheel-block">
+        <div class="rest-wheel-head">
+          <div class="rest-wheel-title">Can't Decide?</div>
+          <div class="rest-wheel-sub">Filter if you want, then give it a spin.</div>
+        </div>
+
+        <div class="rest-filter-row" id="rest-filter-row"></div>
+
+        <div class="wheel-shell">
+          <div class="wheel-pointer" aria-hidden="true">▾</div>
+          <div class="wheel-disc" id="wheel-disc"></div>
+          <div class="wheel-hub" aria-hidden="true">✦</div>
+        </div>
+
+        <button class="spin-btn" id="spin-btn" type="button">Spin the Wheel</button>
+
+        <div class="wheel-result" id="wheel-result" hidden>
+          <div class="wheel-result-label">Tonight, it's</div>
+          <div class="wheel-result-name" id="wheel-result-name"></div>
+          <div class="wheel-result-desc" id="wheel-result-desc"></div>
+          <button class="spin-again-btn" id="spin-again-btn" type="button">Spin Again</button>
+        </div>
+      </div>
+
+      <p class="footer-note">Just for fun during the trip — doesn't affect anything else on the map.</p>
+
+    </div>
 
   </div>
 

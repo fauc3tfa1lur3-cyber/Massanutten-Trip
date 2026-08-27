@@ -21,6 +21,25 @@
   let spinning = false;
   let currentRotation = 0;
 
+  // same fixed-timezone date parsing used everywhere else on the site —
+  // gates this whole page the same way itinerary.html gates itself
+  function parseConfigDate(str) {
+    const m = String(str).match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})(?::(\d{2}))?$/);
+    if (!m) return new Date(str);
+    const offsetHours = (typeof CONFIG !== "undefined" && typeof CONFIG.timezoneOffsetHours === "number") ? CONFIG.timezoneOffsetHours : 4;
+    return new Date(Date.UTC(Number(m[1]), Number(m[2]) - 1, Number(m[3]), Number(m[4]), Number(m[5]), Number(m[6] || 0)) + offsetHours * 60 * 60 * 1000);
+  }
+
+  function isUnlocked() {
+    let now = new Date();
+    const params = new URLSearchParams(window.location.search);
+    const sim = params.get("simDate");
+    if (sim) { const d = parseConfigDate(sim); if (!isNaN(d.getTime())) now = d; }
+    const unlockAt = (typeof CONFIG !== "undefined" && CONFIG.itinerary && CONFIG.itinerary.unlocksAt) ? CONFIG.itinerary.unlocksAt : null;
+    if (!unlockAt) return true; // fail open rather than permanently locking the page
+    return now >= parseConfigDate(unlockAt);
+  }
+
   function restaurants() {
     return (typeof CONFIG !== "undefined" && Array.isArray(CONFIG.restaurants)) ? CONFIG.restaurants : [];
   }
@@ -169,6 +188,17 @@
   }
 
   document.addEventListener("DOMContentLoaded", function () {
+    const lockScreen = document.getElementById("rest-lock-screen");
+    const content = document.getElementById("rest-content");
+
+    if (!isUnlocked()) {
+      if (lockScreen) lockScreen.style.display = "";
+      if (content) content.style.display = "none";
+      return;
+    }
+    if (lockScreen) lockScreen.style.display = "none";
+    if (content) content.style.display = "block";
+
     renderList();
     renderFilters();
     buildWheel();

@@ -20,7 +20,7 @@
     <div class="topbar">
       <div class="brand"><span class="compass">✦</span> Itinerary</div>
       <div class="topbar-actions">
-        <a href="restaurants.html" class="nav-link">Restaurants</a>
+        <a href="restaurants.html" class="nav-link" id="rest-nav-link">Restaurants</a>
         <a href="index.html" class="nav-link">Back to Map</a>
       </div>
     </div>
@@ -40,5 +40,27 @@
 
   <script src="config.js"></script>
   <script src="app.js"></script>
+  <script>
+    // restaurants only make sense once we're actually there — keep the
+    // nav link fully hidden until the itinerary unlocks (same fixed-
+    // timezone date parsing used everywhere else on the site)
+    function parseConfigDate(str) {
+      var m = String(str).match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})(?::(\d{2}))?$/);
+      if (!m) return new Date(str);
+      var offsetHours = (typeof CONFIG !== "undefined" && typeof CONFIG.timezoneOffsetHours === "number") ? CONFIG.timezoneOffsetHours : 4;
+      return new Date(Date.UTC(Number(m[1]), Number(m[2]) - 1, Number(m[3]), Number(m[4]), Number(m[5]), Number(m[6] || 0)) + offsetHours * 60 * 60 * 1000);
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+      var restLink = document.getElementById("rest-nav-link");
+      if (!restLink) return;
+      var now = new Date();
+      var params = new URLSearchParams(window.location.search);
+      var sim = params.get("simDate");
+      if (sim) { var d = parseConfigDate(sim); if (!isNaN(d.getTime())) now = d; }
+      if (now < parseConfigDate(CONFIG.itinerary.unlocksAt)) {
+        restLink.classList.add("hidden");
+      }
+    });
+  </script>
 </body>
 </html>
