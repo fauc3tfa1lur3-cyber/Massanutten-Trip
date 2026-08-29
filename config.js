@@ -1058,6 +1058,8 @@ const CONFIG = {
     { name: "Santa Fe Mexican", category: "Mexican", description: "Mexican.", meals: ["lunch", "dinner"] },
     { name: "El Paso Mexican", category: "Mexican", description: "Mexican.", meals: ["lunch", "dinner"] },
     { name: "The Bayou Kitchen", category: "Cajun", description: "Cajun.", meals: ["lunch", "dinner"] },
+    { name: "Brix & Columns Vineyards", category: "Winery", description: "Bring your own food — no on-site restaurant.", meals: ["lunch"] },
+    { name: "CrossKeys Vineyards", category: "Winery", description: "Bistro on-site if we'd rather not pack food.", meals: ["lunch", "dinner"] },
     { name: "Thunderbird Cafe", category: "Breakfast", description: "Breakfast.", meals: ["breakfast"] },
     { name: "Crossroads Cafe", category: "Lunch", description: "Lunch.", meals: ["lunch"] },
     { name: "Sweetz", category: "Dessert", description: "On the resort. Desserts.", meals: ["dessert"] },

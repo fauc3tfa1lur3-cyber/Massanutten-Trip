@@ -7,7 +7,7 @@
 (function () {
   "use strict";
 
-  const CATEGORY_ORDER = ["Italian", "American", "Mexican", "Cajun", "Breakfast", "Lunch", "Dessert"];
+  const CATEGORY_ORDER = ["Italian", "American", "Mexican", "Cajun", "Winery", "Breakfast", "Lunch", "Dessert"];
   const MEAL_FILTERS = [
     { value: "all", label: "All" },
     { value: "breakfast", label: "Breakfast" },
