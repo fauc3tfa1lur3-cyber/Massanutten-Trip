@@ -909,6 +909,12 @@ const CONFIG = {
             lockedHint: "I planned something for you. You'll find out when you get there. :)",
             detail: "The first of many surprises this weekend. I'll come get you when I'm ready :)",
             mapReveal: "Surprise"
+          },
+          {
+            id: "fri-questions",
+            label: "Questions",
+            icon: "❓",
+            secret: false
           }
         ]
       },

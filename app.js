@@ -10,7 +10,7 @@
   // lets you tell a stale-cached copy on one device apart from an actual
   // clock/timezone disagreement when the same letter unlocks on one
   // device but not another.
-  const SITE_VERSION = "2026-08-27-letter-tweaks-bullets";
+  const SITE_VERSION = "2026-08-27-questions-item-detail-fix";
 
   const LS_PREFIX = "mnadv_";
 
@@ -705,7 +705,7 @@
           ${iconHtml}
           <div class="itin-text">
             <div class="itin-label">${label}${chipClass ? `<span class="chip ${chipClass}">${status}</span>` : ""}</div>
-            <div class="itin-detail">${detail}</div>
+            ${detail ? `<div class="itin-detail">${detail}</div>` : ""}
           </div>
         </div>`;
       });
