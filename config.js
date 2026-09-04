@@ -958,7 +958,7 @@ const CONFIG = {
             revealAt: "2026-09-05T17:30",
             lockedLabel: "CHARM",
             lockedHint: "I hope I'm baking up some anticipation... 😏",
-            detail: "Something to drink, something to paint — questionable artistic decisions encouraged.<br><a href=\"https://www.youtube.com/watch?v=8itNgiazEc0&list=PLQ0zLDYGq2sHpigd3FOi9xTO1YK2JE5zX&index=5\" target=\"_blank\" rel=\"noopener\" class=\"itin-link\">A little preview →</a><br><br>And I hope I'm baking up some anticipation too... 😏",
+            detail: "<a href=\"https://www.youtube.com/watch?v=8itNgiazEc0&list=PLQ0zLDYGq2sHpigd3FOi9xTO1YK2JE5zX&index=5\" target=\"_blank\" rel=\"noopener\" class=\"itin-link\">A little preview →</a><br><br>And I hope I'm baking up some anticipation too... 😏",
             mapReveal: "Charm"
           }
         ]
