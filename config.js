@@ -932,14 +932,14 @@ const CONFIG = {
           },
           {
             id: "sat-attraction",
-            label: "The Detour",
+            label: "The Excursion",
             secret: true,
             choiceKey: "mondayFinal",
             revealAt: "2026-09-05T08:00",
-            lockedLabel: "The Detour",
+            lockedLabel: "The Excursion",
             lockedHint: "Details unlock the morning of.",
             options: {
-              ABOVE: { detail: "Shenandoah Caverns — a 1-hour walking tour. No reservations; we grab tickets when we get there and get slotted into the next available group. Timing's flexible, depending on how we're feeling and the weather.", mapReveal: "Shenandoah Caverns" },
+              ABOVE: { detail: "Shenandoah Caverns<ul class=\"itin-list\"><li>1-hour walking tour</li><li>No reservations — we grab tickets when we get there</li><li>They slot us into the next available group</li><li>Timing's flexible, depending on how we're feeling and the weather</li></ul>", mapReveal: "Shenandoah Caverns" },
               BELOW: { detail: "Skyline Drive — a scenic overlook drive along the ridge.", mapReveal: "Skyline Drive" }
             }
           },
@@ -1034,7 +1034,7 @@ const CONFIG = {
             lockedLabel: "Final Adventure",
             lockedHint: "One last stop before we leave the mountains. Details unlock the morning of.",
             options: {
-              ABOVE: { detail: "Skyline Drive — in at Swift Run Gap, then north through the park, stopping for overlooks along the way. Planned exit: Front Royal (or Thornton Gap if we're ready to be done with mountain driving).", mapReveal: "Skyline Drive" },
+              ABOVE: { detail: "Skyline Drive<ul class=\"itin-list\"><li>In at Swift Run Gap, then north through the park, stopping for overlooks along the way</li><li>Planned exit: Front Royal (or Thornton Gap if we're ready to be done with mountain driving)</li></ul>", mapReveal: "Skyline Drive" },
               BELOW: { detail: "Caverns tour nearby — cool, underground, very much the opposite of above.", mapReveal: "Caverns" }
             }
           },
