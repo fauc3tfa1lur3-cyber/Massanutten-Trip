@@ -939,7 +939,7 @@ const CONFIG = {
             lockedLabel: "The Detour",
             lockedHint: "Details unlock the morning of.",
             options: {
-              ABOVE: { detail: "Caverns tour nearby — cool, underground, and about as far from a scenic overlook as you can get.", mapReveal: "Caverns" },
+              ABOVE: { detail: "Shenandoah Caverns — a 1-hour walking tour. No reservations; we grab tickets when we get there and get slotted into the next available group. Timing's flexible, depending on how we're feeling and the weather.", mapReveal: "Shenandoah Caverns" },
               BELOW: { detail: "Skyline Drive — a scenic overlook drive along the ridge.", mapReveal: "Skyline Drive" }
             }
           },
@@ -983,7 +983,7 @@ const CONFIG = {
             lockedLabel: "Morning activity",
             lockedHint: "Your choice is locked in. The details show up morning-of.",
             options: {
-              RISE: { detail: "Scenic chairlift — 11:50 AM. Dress warm, it's breezy up top.", mapReveal: "Chairlift" },
+              RISE: { detail: "Scenic chairlift, at the resort — 11:50 AM. Dress warm, it's breezy up top.", mapReveal: "Chairlift" },
               RISK: { detail: "Chairlift + Tubing, 10:00 AM–2:00 PM. Wear closed-toed shoes and something you can move in.", mapReveal: "Chairlift + Tubing" }
             }
           },
@@ -1042,7 +1042,7 @@ const CONFIG = {
             id: "mon-home",
             label: "The Way Home",
             icon: "🚗",
-            detail: "Back home, adventure complete.",
+            detail: "Back home.",
             secret: false
           }
         ]
