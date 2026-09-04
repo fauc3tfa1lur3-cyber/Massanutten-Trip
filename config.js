@@ -922,6 +922,7 @@ const CONFIG = {
         id: "saturday",
         label: "Saturday",
         date: "Sept 5",
+        unlocksAt: "2026-09-04T20:00", // this day's block stays hidden until Friday 8:00 PM
         items: [
           {
             id: "sat-slow-start",
@@ -973,6 +974,7 @@ const CONFIG = {
         id: "sunday",
         label: "Sunday",
         date: "Sept 6",
+        unlocksAt: "2026-09-05T19:00", // this day's block stays hidden until Saturday 7:00 PM
         items: [
           {
             id: "sun-morning",
@@ -1010,6 +1012,7 @@ const CONFIG = {
         id: "monday",
         label: "Monday",
         date: "Sept 7",
+        unlocksAt: "2026-09-06T18:00", // this day's block stays hidden until Sunday 6:00 PM
         items: [
           {
             id: "mon-checkout",

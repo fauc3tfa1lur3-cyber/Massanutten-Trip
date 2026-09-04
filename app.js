@@ -10,7 +10,7 @@
   // lets you tell a stale-cached copy on one device apart from an actual
   // clock/timezone disagreement when the same letter unlocks on one
   // device but not another.
-  const SITE_VERSION = "2026-08-27-questions-item-detail-fix";
+  const SITE_VERSION = "2026-09-04-gradual-day-unlock-map-sync";
 
   const LS_PREFIX = "mnadv_";
 
@@ -368,10 +368,17 @@
   const TRIP_DAY_IDS = ["friday", "saturday", "sunday", "monday"];
 
   function renderTripMap(container) {
-    const dayStarts = [parseDate(CONFIG.trip.startDate)];
-    for (let i = 1; i < TRIP_DAY_IDS.length; i++) {
-      dayStarts.push(new Date(dayStarts[i - 1].getTime() + 24 * 60 * 60 * 1000));
-    }
+    // Each day's section on the map appears at that day's own configured
+    // unlocksAt (e.g. Saturday's block at Friday 8 PM, not Saturday
+    // midnight) — same gating itinerary.html uses for its day-blocks, so
+    // the map and the full itinerary always agree on when a day reveals.
+    // Falls back to midnight-of-that-day if a day is ever missing its own
+    // unlocksAt, so nothing breaks if one gets left blank.
+    const dayStarts = TRIP_DAY_IDS.map((id, i) => {
+      const dayConfig = CONFIG.itinerary.days.find(d => d.id === id);
+      if (dayConfig && dayConfig.unlocksAt) return parseDate(dayConfig.unlocksAt);
+      return new Date(parseDate(CONFIG.trip.startDate).getTime() + i * 24 * 60 * 60 * 1000);
+    });
 
     function lettersForDay(i) {
       const from = dayStarts[i].getTime();
@@ -691,6 +698,23 @@
         <div class="day-body">
           <div class="day-divider" aria-hidden="true"></div>
           <div class="day-items">`;
+
+      // A day can stay hidden as a whole (not just its individual secret
+      // items) until an evening-before unlock time, so the itinerary fills
+      // in gradually as the trip goes rather than showing every day at
+      // once from the moment the page unlocks.
+      if (day.unlocksAt && isFuture(day.unlocksAt)) {
+        html += `<div class="itin-item locked">
+          <div class="itin-icon">🔒</div>
+          <div class="itin-text">
+            <div class="itin-label">Not yet</div>
+            <div class="itin-detail">This day unlocks ${formatUnlock(day.unlocksAt)}.</div>
+          </div>
+        </div>`;
+        html += `</div></div></div>`;
+        return;
+      }
+
       day.items.forEach(item => {
         let status = itemStatus(item);
         const label = itemDisplayLabel(item, status);
