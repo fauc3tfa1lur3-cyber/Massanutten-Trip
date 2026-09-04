@@ -952,24 +952,14 @@ const CONFIG = {
             secret: false
           },
           {
-            id: "sat-later-activity",
-            label: "Charm, Part 1",
-            secret: true,
-            revealAt: "2026-09-05T14:00",
-            lockedLabel: "CHARM, Part I",
-            lockedHint: "Part one of something I've been planning. Unlocks early afternoon.",
-            detail: "Something to drink, something to paint — questionable artistic decisions encouraged.<br><a href=\"https://www.youtube.com/watch?v=8itNgiazEc0&list=PLQ0zLDYGq2sHpigd3FOi9xTO1YK2JE5zX&index=5\" target=\"_blank\" rel=\"noopener\" class=\"itin-link\">A little preview →</a>",
-            mapReveal: "Charm, Part 1"
-          },
-          {
             id: "sat-evening",
-            label: "Charm, Part 2",
+            label: "Charm",
             secret: true,
             revealAt: "2026-09-05T17:30",
-            lockedLabel: "CHARM, Part II",
+            lockedLabel: "CHARM",
             lockedHint: "I hope I'm baking up some anticipation... 😏",
-            detail: "I hope I'm baking up some anticipation... 😏",
-            mapReveal: "Charm, Part 2"
+            detail: "Something to drink, something to paint — questionable artistic decisions encouraged.<br><a href=\"https://www.youtube.com/watch?v=8itNgiazEc0&list=PLQ0zLDYGq2sHpigd3FOi9xTO1YK2JE5zX&index=5\" target=\"_blank\" rel=\"noopener\" class=\"itin-link\">A little preview →</a><br><br>And I hope I'm baking up some anticipation too... 😏",
+            mapReveal: "Charm"
           }
         ]
       },
